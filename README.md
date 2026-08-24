@@ -2,6 +2,10 @@
 
 A high-performance, responsive single-page web architecture designed for audio streaming, dynamic Bandcamp integration, and custom media showcases.
 
+<p align="center">
+  <img src="frontend/src/assets/img/originals/hero-img.png" alt="Hero banner" />
+</p>
+
 > Legacy client notes (redacted): [documentation/legacy-client-notes.md](documentation/legacy-client-notes.md)
 
 ### Project Goal
