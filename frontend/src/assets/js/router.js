@@ -26,7 +26,7 @@ export default class Router {
     this._routeTo(initialPath);
     try {
       history.replaceState({ path: initialPath }, '', window.location.href);
-    } catch (err) { }
+    } catch (err) {}
   }
 
   // Clean up event listeners when the router is no longer needed
@@ -40,7 +40,9 @@ export default class Router {
   navigate(path) {
     if (!path) path = '/';
     if (this.useHash) {
-      const hash = path.startsWith('#') ? path : '#' + (path.startsWith('/') ? path.slice(1) : path);
+      const hash = path.startsWith('#')
+        ? path
+        : '#' + (path.startsWith('/') ? path.slice(1) : path);
       // Use pushState to update URL without causing native anchor jump
       try {
         history.pushState({ path: path }, '', hash);
@@ -49,7 +51,11 @@ export default class Router {
         window.location.hash = hash;
       }
       // Immediately route to new path
-      try { this._routeTo(this._getPath()); } catch (err) { console.error('[router] navigate error', err); }
+      try {
+        this._routeTo(this._getPath());
+      } catch (err) {
+        console.error('[router] navigate error', err);
+      }
     } else {
       if (!path.startsWith('/')) path = '/' + path;
       history.pushState({ path: path }, '', path);
@@ -75,7 +81,11 @@ export default class Router {
     console.log('[router] route to', path);
     const handler = this.routes[path] || this.routes['/'] || this.routes['/404'];
     if (typeof handler === 'function') {
-      try { handler(path); } catch (err) { console.error('[router] handler error', err); }
+      try {
+        handler(path);
+      } catch (err) {
+        console.error('[router] handler error', err);
+      }
     } else {
       console.warn('[router] no handler for', path);
     }
@@ -127,7 +137,8 @@ export default class Router {
         if (href.startsWith('#')) linkPath = href.slice(1) || '/';
       }
       // normalize
-      if (!linkPath.startsWith('/')) linkPath = linkPath.startsWith('/') ? linkPath : '/' + linkPath.replace(/^#/, '');
+      if (!linkPath.startsWith('/'))
+        linkPath = linkPath.startsWith('/') ? linkPath : '/' + linkPath.replace(/^#/, '');
       const normPath = path.startsWith('/') ? path : '/' + path.replace(/^#/, '');
       if (linkPath === normPath) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');

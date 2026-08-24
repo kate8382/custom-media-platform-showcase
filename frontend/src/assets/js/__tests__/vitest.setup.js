@@ -12,7 +12,7 @@ if (typeof globalThis.requestAnimationFrame === 'undefined') {
 
 // Ensure scrollTo exists and is a noop to avoid errors in tests
 if (typeof globalThis.scrollTo === 'undefined') {
-  globalThis.scrollTo = () => { };
+  globalThis.scrollTo = () => {};
 }
 
 // Silence noisy console output from application code during tests
@@ -20,7 +20,7 @@ if (typeof globalThis.scrollTo === 'undefined') {
 globalThis.__originalConsole = globalThis.console;
 globalThis.console = {
   ...globalThis.console,
-  log: () => { },
-  warn: () => { },
-  error: () => { }
+  log: () => {},
+  warn: () => {},
+  error: () => {},
 };

@@ -49,7 +49,8 @@ describe('ContactsForm', () => {
     handler.init();
 
     const form = document.getElementById('contactsForm');
-    form.querySelector('[name="message"]').value = 'This message is long enough to pass validation.';
+    form.querySelector('[name="message"]').value =
+      'This message is long enough to pass validation.';
 
     form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
 
@@ -64,12 +65,15 @@ describe('ContactsForm', () => {
   });
 
   it('shows error when backend responds with error payload', async () => {
-    global.fetch = vi.fn(() => Promise.resolve({ ok: false, json: () => Promise.resolve({ error: 'rate limit' }) }));
+    global.fetch = vi.fn(() =>
+      Promise.resolve({ ok: false, json: () => Promise.resolve({ error: 'rate limit' }) })
+    );
     const handler = new ContactsForm('#contactsForm');
     handler.init();
 
     const form = document.getElementById('contactsForm');
-    form.querySelector('[name="message"]').value = 'This message is long enough to pass validation.';
+    form.querySelector('[name="message"]').value =
+      'This message is long enough to pass validation.';
 
     form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
     await new Promise((resolve) => setTimeout(resolve, 0));

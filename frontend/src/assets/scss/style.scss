@@ -88,11 +88,13 @@ body {
     --section-transition-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
     --section-enter-translate: 10px;
 
-    >section {
+    > section {
       scroll-margin-top: var(--header-height, 0px);
 
       /* configurable transition duration */
-      transition: opacity var(--section-transition-duration, 320ms) ease-in-out, transform var(--section-transition-duration, 320ms) ease-in-out;
+      transition:
+        opacity var(--section-transition-duration, 320ms) ease-in-out,
+        transform var(--section-transition-duration, 320ms) ease-in-out;
       /* For smoother mobile performance, use will-change to hint at upcoming changes */
       will-change: opacity, transform;
 

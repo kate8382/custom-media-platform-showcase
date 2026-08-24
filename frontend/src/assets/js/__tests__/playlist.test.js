@@ -22,7 +22,14 @@ describe('Playlist helpers (unit)', () => {
 
   it('_computeVisibleCount returns perRow * rows', () => {
     const pl = new Playlist(root, { rows: 2 });
-    const items = [makeElem(0), makeElem(0), makeElem(0), makeElem(320), makeElem(320), makeElem(320)];
+    const items = [
+      makeElem(0),
+      makeElem(0),
+      makeElem(0),
+      makeElem(320),
+      makeElem(320),
+      makeElem(320),
+    ];
     expect(pl._computeVisibleCount(items)).toBe(6);
   });
 
@@ -43,13 +50,16 @@ describe('Playlist helpers (unit)', () => {
 });
 
 beforeEach(() => {
-  document.body.innerHTML = '<ul id="playList">' +
-    Array.from({ length: 10 }).map((_, i) => `<li class="playlist__item">Item${i + 1}</li>`).join('') +
+  document.body.innerHTML =
+    '<ul id="playList">' +
+    Array.from({ length: 10 })
+      .map((_, i) => `<li class="playlist__item">Item${i + 1}</li>`)
+      .join('') +
     '</ul>';
 });
 
 // jsdom in Vitest doesn't implement scrollTo – provide a no-op to silence warnings
-if (typeof global.scrollTo !== 'function') global.scrollTo = () => { };
+if (typeof global.scrollTo !== 'function') global.scrollTo = () => {};
 
 test('toggle expands to show all items', () => {
   const root = document.getElementById('playList');
@@ -58,7 +68,9 @@ test('toggle expands to show all items', () => {
   const btn = document.querySelector('.playlist__toggle');
   expect(btn).toBeTruthy();
   btn.click();
-  const visible = Array.from(root.querySelectorAll('.playlist__item')).filter(li => li.style.display !== 'none');
+  const visible = Array.from(root.querySelectorAll('.playlist__item')).filter(
+    (li) => li.style.display !== 'none'
+  );
   expect(visible.length).toBe(10);
 });
 
@@ -72,7 +84,8 @@ test('does not create duplicate toggle when enhance is called multiple times', (
 });
 
 test('normalizeIframes removes width/height attributes and styles', () => {
-  document.body.innerHTML += '<iframe class="playlist__iframe" width="280" height="394" style="width:280px;height:394px;"></iframe>';
+  document.body.innerHTML +=
+    '<iframe class="playlist__iframe" width="280" height="394" style="width:280px;height:394px;"></iframe>';
   const root = document.getElementById('playList');
   const p = new Playlist(root);
   p.normalizeIframes();
@@ -84,10 +97,18 @@ test('normalizeIframes removes width/height attributes and styles', () => {
 });
 
 test('calls normalizeIframes after inserting server HTML iframes', async () => {
-  document.body.innerHTML += '<iframe class="playlist__iframe" width="280" height="394" style="width:280px;height:394px;"></iframe>';
+  document.body.innerHTML +=
+    '<iframe class="playlist__iframe" width="280" height="394" style="width:280px;height:394px;"></iframe>';
   const root = document.getElementById('playList');
   // stub fetch to return a Response-like object with ok:true and json()
-  global.fetch = () => Promise.resolve({ ok: true, json: () => Promise.resolve({ html: '<li class="playlist__item"><iframe class="playlist__iframe" width="280" height="394" style="width:280px;height:394px;"></iframe></li>' }) });
+  global.fetch = () =>
+    Promise.resolve({
+      ok: true,
+      json: () =>
+        Promise.resolve({
+          html: '<li class="playlist__item"><iframe class="playlist__iframe" width="280" height="394" style="width:280px;height:394px;"></iframe></li>',
+        }),
+    });
   const p = new Playlist(root);
   const spy = vi.spyOn(p, 'normalizeIframes');
   await p.init();
@@ -95,4 +116,3 @@ test('calls normalizeIframes after inserting server HTML iframes', async () => {
   expect(spy).toHaveBeenCalled();
   spy.mockRestore();
 });
-

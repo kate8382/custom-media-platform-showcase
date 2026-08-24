@@ -1,4 +1,4 @@
-const renderApiURL = import.meta.env.VITE_API_URL || "";
+const renderApiURL = import.meta.env.VITE_API_URL || '';
 
 export class Playlist {
   constructor(root = null, options = {}) {
@@ -14,9 +14,9 @@ export class Playlist {
   init() {
     const endpointURL = `${renderApiURL}/api/bandcamp`;
 
-    console.log("In Playlist init...");
+    console.log('In Playlist init...');
     console.log(`Render API URL: ${renderApiURL}`);
-    console.log(`Default endpoint: ${endpointURL}`)
+    console.log(`Default endpoint: ${endpointURL}`);
 
     if (!this.root) return;
     // fetch HTML from backend and insert
@@ -32,7 +32,10 @@ export class Playlist {
           return;
         }
 
-        if (typeof data === 'string' || (typeof data === 'object' && typeof data.html === 'string')) {
+        if (
+          typeof data === 'string' ||
+          (typeof data === 'object' && typeof data.html === 'string')
+        ) {
           const html = typeof data === 'string' ? data : data.html;
           if (html) this.root.innerHTML = html;
           this.normalizeIframes();
@@ -42,7 +45,9 @@ export class Playlist {
 
         // Prefer server-provided HTML. If structured data arrives, log and skip to avoid duplicating markup/styling.
         if (data.Tracks || data.tracks) {
-          console.warn('playlist: received structured data; server should return HTML. Skipping build to avoid duplicating markup.');
+          console.warn(
+            'playlist: received structured data; server should return HTML. Skipping build to avoid duplicating markup.'
+          );
           this.enhance();
           return;
         }
@@ -56,7 +61,10 @@ export class Playlist {
       .catch((err) => {
         // Log the error but continue gracefully — do not break the page
         // (network races can happen during dev when backend restarts)
-        console.warn('playlist: failed to load /api/bandcamp, falling back to static markup', err && err.message ? err.message : err);
+        console.warn(
+          'playlist: failed to load /api/bandcamp, falling back to static markup',
+          err && err.message ? err.message : err
+        );
         this.normalizeIframes();
         this.enhance();
       });
@@ -65,25 +73,28 @@ export class Playlist {
   // Fetch helper with retry/backoff to handle transient backend startup races
   // Robust fetch with retries and exponential backoff that returns null on persistent failure
   _fetchWithRetry(url, attempts = 3, delay = 200) {
-    const doFetch = (n, wait) => fetch(url, { credentials: 'same-origin' })
-      .then((res) => {
-        if (!res.ok) {
-          const err = new Error(`Fetch failed: ${res.status}`);
-          err.status = res.status;
-          throw err;
-        }
-        // try to parse JSON safely
-        return res.json().catch(() => {
-          // if response isn't JSON, return raw text
-          return res.text().then((t) => t);
+    const doFetch = (n, wait) =>
+      fetch(url, { credentials: 'same-origin' })
+        .then((res) => {
+          if (!res.ok) {
+            const err = new Error(`Fetch failed: ${res.status}`);
+            err.status = res.status;
+            throw err;
+          }
+          // try to parse JSON safely
+          return res.json().catch(() => {
+            // if response isn't JSON, return raw text
+            return res.text().then((t) => t);
+          });
+        })
+        .catch((err) => {
+          if (n <= 1) return Promise.reject(err);
+          // small jitter to avoid stampeding
+          const jitter = Math.floor(Math.random() * 80);
+          return new Promise((resolve) => setTimeout(resolve, wait + jitter)).then(() =>
+            doFetch(n - 1, Math.min(wait * 2, 2000))
+          );
         });
-      })
-      .catch((err) => {
-        if (n <= 1) return Promise.reject(err);
-        // small jitter to avoid stampeding
-        const jitter = Math.floor(Math.random() * 80);
-        return new Promise((resolve) => setTimeout(resolve, wait + jitter)).then(() => doFetch(n - 1, Math.min(wait * 2, 2000)));
-      });
 
     // ensure the returned promise resolves to null on persistent failure
     return doFetch(attempts, delay).catch(() => null);
@@ -105,7 +116,11 @@ export class Playlist {
     this.content = this.root.querySelector('.playlist__content') || this.root;
 
     // Avoid creating duplicate toggle buttons if enhance() runs multiple times
-    if (this.root.nextElementSibling && this.root.nextElementSibling.classList && this.root.nextElementSibling.classList.contains(this.toggleClass)) {
+    if (
+      this.root.nextElementSibling &&
+      this.root.nextElementSibling.classList &&
+      this.root.nextElementSibling.classList.contains(this.toggleClass)
+    ) {
       return;
     }
 
@@ -150,20 +165,28 @@ export class Playlist {
         // attach a one-time load listener
         const onload = () => {
           // eslint-disable-next-line no-unused-vars
-          try { this._updateVisibility(items, btn); } catch (e) { /* ignore */ }
+          try {
+            this._updateVisibility(items, btn);
+          } catch (e) {
+            /* ignore */
+          }
           f.removeEventListener('load', onload);
         };
         f.addEventListener('load', onload);
       });
       // eslint-disable-next-line no-unused-vars
-    } catch (e) { /* ignore */ }
+    } catch (e) {
+      /* ignore */
+    }
   }
 
   // Remove inline width/height attributes and styles from Bandcamp iframes
   // so that responsive CSS variables can take effect without needing !important.
   normalizeIframes() {
     // operate even if this.root is not inside document (tests append iframe to body)
-    const insideRoot = this.root ? Array.from(this.root.querySelectorAll('iframe.playlist__iframe, iframe')) : [];
+    const insideRoot = this.root
+      ? Array.from(this.root.querySelectorAll('iframe.playlist__iframe, iframe'))
+      : [];
     const globalMatches = Array.from(document.querySelectorAll('iframe.playlist__iframe'));
     // merge unique frames
     const set = new Set([...insideRoot, ...globalMatches]);
@@ -213,7 +236,8 @@ export class Playlist {
     let count = 0;
     for (let i = 0; i < items.length; i++) {
       const r = items[i].getBoundingClientRect();
-      if (Math.abs(r.top - firstTop) <= 3) count++; else break;
+      if (Math.abs(r.top - firstTop) <= 3) count++;
+      else break;
     }
     return Math.max(1, count);
   }

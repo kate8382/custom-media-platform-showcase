@@ -41,7 +41,10 @@ class App {
       // 1) `data-href` on the control (preferred)
       // 2) if the control is an <a>, use its `href`
       // 3) otherwise, look for an inner <a> and use its href
-      const url = bandcampBtn.dataset?.href || bandcampBtn.getAttribute?.('href') || bandcampBtn.querySelector?.('a')?.href;
+      const url =
+        bandcampBtn.dataset?.href ||
+        bandcampBtn.getAttribute?.('href') ||
+        bandcampBtn.querySelector?.('a')?.href;
       if (!url) return;
       e.preventDefault();
       try {
@@ -122,7 +125,11 @@ class App {
 
         s.setAttribute('tabindex', '-1');
         // eslint-disable-next-line no-unused-vars
-        try { s.focus({ preventScroll: true }); } catch (e) { s.focus(); }
+        try {
+          s.focus({ preventScroll: true });
+        } catch (e) {
+          s.focus();
+        }
         s.removeAttribute('tabindex');
         // initialize playlist when section becomes visible
         if (target.id === 'playlist') {
@@ -134,7 +141,11 @@ class App {
                 this.playlist = new Playlist(listEl);
                 this.playlist.init();
               } else {
-                try { this.playlist.enhance(); } catch (e) { console.error('[playlist] enhance error', e); }
+                try {
+                  this.playlist.enhance();
+                } catch (e) {
+                  console.error('[playlist] enhance error', e);
+                }
               }
             }
           } catch (err) {
@@ -158,7 +169,7 @@ class App {
       '/about': () => this.showSection('about'),
       '/playlist': () => this.showSection('playlist'),
       '/gallery': () => this.showSection('gallery'),
-      '/contacts': () => this.showSection('contacts')
+      '/contacts': () => this.showSection('contacts'),
     };
 
     this.router = new Router(routes, { useHash: true });
@@ -193,11 +204,21 @@ class App {
       navLinks.forEach((link) => {
         link.addEventListener('click', (e) => {
           const href = link.getAttribute('href') || '';
-          if (!href || href.startsWith('http') || href.startsWith('mailto:') || link.target === '_blank') return;
+          if (
+            !href ||
+            href.startsWith('http') ||
+            href.startsWith('mailto:') ||
+            link.target === '_blank'
+          )
+            return;
           e.preventDefault();
           let path = href;
           if (href.startsWith('#')) path = href.slice(1);
-          try { this.router.navigate(path); } catch (err) { console.error('[nav] navigate error', err); }
+          try {
+            this.router.navigate(path);
+          } catch (err) {
+            console.error('[nav] navigate error', err);
+          }
 
           const burger = document.getElementById('headerBurger');
           const header = document.getElementById('header');
@@ -207,11 +228,13 @@ class App {
           }
         });
       });
-    } catch (err) { console.error('[nav] integrate error', err); }
+    } catch (err) {
+      console.error('[nav] integrate error', err);
+    }
   }
 
   // (legacy) no-op — already handled in the primary setupBandcamp above
-  setupBandcampLegacy() { }
+  setupBandcampLegacy() {}
 
   // Main init function to set up the application
   init() {
@@ -230,4 +253,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 export default App;
-

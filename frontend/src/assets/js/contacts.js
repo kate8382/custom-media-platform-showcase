@@ -1,5 +1,5 @@
 // Contacts form handler implemented as a class to enable unit testing and re-use.
-const renderApiURL = import.meta.env.VITE_API_URL || "";
+const renderApiURL = import.meta.env.VITE_API_URL || '';
 
 export class ContactsForm {
   constructor(selector = '#contactsForm', options = {}) {
@@ -13,12 +13,14 @@ export class ContactsForm {
   }
 
   init() {
-    console.log("In ContactsForm init...")
+    console.log('In ContactsForm init...');
     console.log(`Render API URL: ${renderApiURL}`);
-    console.log(`Default endpoint: ${this.defaultEndpoint}`)
+    console.log(`Default endpoint: ${this.defaultEndpoint}`);
 
     if (!this.form) return false;
-    try { this.form.noValidate = true; } catch (e) { }
+    try {
+      this.form.noValidate = true;
+    } catch (e) {}
 
     // Disable native required/minlength for the message field so JS shows a consistent message
     try {
@@ -28,11 +30,13 @@ export class ContactsForm {
         msgField.minLength = 0;
         if (msgField.removeAttribute) msgField.removeAttribute('minlength');
       }
-    } catch (e) { }
+    } catch (e) {}
 
     console.debug && console.debug('[ContactsForm] init:', !!this.form);
 
-    this.statusEl = this.form.querySelector('#contactsFormStatus') || this.form.querySelector('.contacts__form-status');
+    this.statusEl =
+      this.form.querySelector('#contactsFormStatus') ||
+      this.form.querySelector('.contacts__form-status');
     this.submitBtn = this.form.querySelector('#contactsFormSend');
     this.form.addEventListener('submit', this.handleSubmit.bind(this));
     return true;
@@ -102,7 +106,11 @@ export class ContactsForm {
           }
           this.attachClearOnField('email');
           return;
-        } else if (firstInvalid.name === 'message' && firstInvalid.validity && firstInvalid.validity.tooShort) {
+        } else if (
+          firstInvalid.name === 'message' &&
+          firstInvalid.validity &&
+          firstInvalid.validity.tooShort
+        ) {
           // fallback to our custom message handling below — do NOT return here
         } else {
           this.setStatus(firstInvalid.validationMessage || 'Please complete the form.', false);
@@ -133,7 +141,7 @@ export class ContactsForm {
         const res = await fetch(backendEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message })
+          body: JSON.stringify({ name, email, message }),
         });
 
         if (res.ok) {
@@ -141,7 +149,9 @@ export class ContactsForm {
           form.reset();
         } else {
           // show a generic failure message (tests expect a generic 'Failed to send')
-          try { await res.json(); } catch (_) { }
+          try {
+            await res.json();
+          } catch (_) {}
           this.setStatus('Failed to send', false);
         }
       } else {
@@ -150,12 +160,10 @@ export class ContactsForm {
         window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
         this.setStatus('Opened mail client as fallback.', true);
       }
-    }
-    catch (err) {
+    } catch (err) {
       console.error('Contact send error', err);
       this.setStatus('Failed to send message. You can also email directly.', false);
-    }
-    finally {
+    } finally {
       if (this.submitBtn) this.submitBtn.disabled = false;
     }
   }
@@ -166,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
   try {
     const handler = new ContactsForm('#contactsForm');
     handler.init();
-  } catch (e) { }
+  } catch (e) {}
 });
 
 export default ContactsForm;

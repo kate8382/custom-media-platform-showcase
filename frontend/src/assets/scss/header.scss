@@ -12,7 +12,6 @@
 
     @media (max-width: 600px) {
       width: 50%;
-
     }
 
     &-img {
@@ -65,11 +64,10 @@
           }
 
           /* Active route styling when router sets aria-current="page" */
-          &[aria-current="page"] {
+          &[aria-current='page'] {
             color: var(--gold-active-color);
             font-weight: 700;
           }
-
         }
       }
     }

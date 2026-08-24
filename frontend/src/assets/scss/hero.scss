@@ -50,7 +50,9 @@
       color: var(--white-color);
       background-color: var(--blue-btn-color);
       border-radius: var(--btn-border-radius);
-      transition: background-color 0.3s ease-in-out, outline 0.3s ease-in-out;
+      transition:
+        background-color 0.3s ease-in-out,
+        outline 0.3s ease-in-out;
 
       &:hover {
         background-color: var(--blue-hover-color);
