@@ -1,0 +1,137 @@
+.header {
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  padding: var(--padding-top-btn) var(--padding-right);
+  background-color: var(--black-color);
+
+  &__logo {
+    width: 30%;
+
+    @media (max-width: 600px) {
+      width: 50%;
+
+    }
+
+    &-img {
+      // width: 280px;
+      max-width: 100%;
+      margin-left: -14px;
+
+      @media (max-width: 1024px) {
+        width: 200px;
+        max-width: 100%;
+      }
+
+      @media (max-width: 600px) {
+        width: 120px;
+        max-width: 100%;
+        min-height: 32px;
+      }
+    }
+  }
+
+  &__nav {
+    width: 70%;
+
+    .header__nav-list {
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .header__nav-item {
+        width: 25%;
+        min-height: auto;
+        text-align: end;
+        font-size: var(--text-size);
+        font-family: var(--text-family);
+
+        .header__nav-link {
+          display: block;
+          width: 100%;
+          height: 100%;
+          color: var(--white-color);
+          transition: color 0.3s ease-in-out;
+
+          &:hover {
+            color: var(--gold-color);
+          }
+
+          &:focus,
+          &:active {
+            color: var(--gold-active-color);
+          }
+
+          /* Active route styling when router sets aria-current="page" */
+          &[aria-current="page"] {
+            color: var(--gold-active-color);
+            font-weight: 700;
+          }
+
+        }
+      }
+    }
+  }
+
+  /* Burger button (mobile) */
+  .header__burger {
+    display: none;
+    align-self: center;
+    padding: 8px;
+    color: var(--white-color);
+    background: none;
+    outline: none;
+    border: none;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--gold-hover-color);
+    }
+
+    &:focus,
+    &:active {
+      color: var(--gold-active-color);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header__burger {
+      display: block;
+    }
+
+    /* hide desktop nav on small screens */
+    .header__nav {
+      display: none;
+      width: 100%;
+    }
+
+    /* mobile open state: show nav as full-width dropdown. z-index: 5 for stacking context > z-index of .about__gallery-item-- (0-4) */
+    &.header--open {
+      .header__nav {
+        display: block;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        z-index: 5;
+        width: 50%;
+        height: auto;
+        padding: var(--padding-top-btn) var(--padding-right);
+        background: var(--black-color);
+
+        .header__nav-list {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          width: 100%;
+          gap: var(--mid-gap);
+
+          .header__nav-item {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+}

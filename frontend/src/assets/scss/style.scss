@@ -1,0 +1,131 @@
+@use 'fonts';
+@use 'variables' as *;
+@use 'header';
+@use 'hero';
+@use 'about';
+@use 'playlist';
+@use 'gallery';
+@use 'contacts';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  display: block;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+button,
+input {
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background-repeat: no-repeat;
+}
+
+.flex {
+  display: flex;
+}
+
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  padding: 0;
+  font-family: var(--text-family);
+  background: var(--light-grey-color);
+}
+
+.container {
+  flex-direction: column;
+  width: 100%;
+  /* Ensure container fills viewport so footer can be pushed to bottom */
+  min-height: 100vh;
+  height: auto;
+
+  /* Ensure native anchor navigation and browser scrolling offset sections by header height
+   and animated transitions. Nest under `main` for SCSS clarity. */
+  main {
+    /* Prevent horizontal scroll during translate animations */
+    overflow-x: hidden;
+    background-clip: padding-box;
+
+    /* defaults for section animation — can be overridden in variables.scss */
+    --section-transition-duration: 420ms;
+    --section-transition-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --section-enter-translate: 10px;
+
+    >section {
+      scroll-margin-top: var(--header-height, 0px);
+
+      /* configurable transition duration */
+      transition: opacity var(--section-transition-duration, 320ms) ease-in-out, transform var(--section-transition-duration, 320ms) ease-in-out;
+      /* For smoother mobile performance, use will-change to hint at upcoming changes */
+      will-change: opacity, transform;
+
+      /* `is-hidden` is the start state for the enter animation:
+         element starts slightly right and invisible; JS removes this
+         class to trigger a smooth slide-in from right → center. */
+      &.is-hidden {
+        opacity: 0;
+        transform: translate3d(var(--section-enter-translate, 10px), 0, 0);
+        pointer-events: none;
+        backface-visibility: hidden;
+      }
+
+      /* Keep native hidden attribute behavior for instant-hide when needed */
+      &[hidden] {
+        display: none;
+      }
+    }
+
+    /* allow main to take remaining space so footer stays at bottom */
+    flex: 1 1 auto;
+  }
+
+  .footer {
+    padding: var(--padding-top-btn) var(--padding-right-btn);
+    background-color: var(--black-color);
+
+    &__copyright {
+      text-align: center;
+      font-size: var(--link-size);
+      color: var(--white-color);
+      line-height: 16px;
+      opacity: 0.8;
+    }
+  }
+}

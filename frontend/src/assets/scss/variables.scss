@@ -1,0 +1,46 @@
+:root {
+  // At 1280px these match the layout in the mock; smaller screens scale down.
+  /* Allow container to scale more on very wide viewports while keeping sensible limits */
+  --container-max-width: clamp(380px, 100vw, 1600px);
+  /* Prefer linear interpolation between 380px and 1280px viewports to avoid runaway vw values */
+  --padding-top: clamp(32px, calc(32px + ((100vw - 380px) * 28 / 900)), 60px);
+  --padding-right: clamp(24px, calc(24px + ((100vw - 380px) * 24 / 900)), 48px);
+  --padding-top-btn: 16px;
+  // --padding-top-btn: clamp(8px, calc(8px + ((100vw - 380px) * 8 / 900)), 16px);
+  --padding-right-btn: 32px;
+  // --padding-right-btn: clamp(16px, calc(16px + ((100vw - 380px) * 16 / 900)), 32px);
+  --max-gap: clamp(16px, calc(16px + ((100vw - 380px) * 16 / 900)), 32px);
+  --mid-gap: clamp(12px, calc(12px + ((100vw - 380px) * 12 / 900)), 24px);
+  --min-gap: clamp(8px, calc(8px + ((100vw - 380px) * 8 / 900)), 16px);
+  --btn-border-radius: 4px;
+  --card-border-radius: 8px;
+
+  // Font Families & Font Sizes (preferred interpolation between design breakpoints 380px → 1280px)
+  // At 1280px these match the design maxima; max values are increased so fonts can continue scaling on very large screens and won't look small.
+  --h1-size: clamp(32px, calc(32px + ((100vw - 380px) * 16 / 900)), 48px);
+  --h2-size: clamp(24px, calc(24px + ((100vw - 380px) * 12 / 900)), 36px);
+  --h3-size: clamp(20px, calc(20px + ((100vw - 380px) * 10 / 900)), 30px);
+  --text-size: clamp(16px, calc(16px + ((100vw - 380px) * 8 / 900)), 24px);
+  --btn-size: clamp(14px, calc(14px + ((100vw - 380px) * 2 / 900)), 16px);
+  --input-size: clamp(12px, calc(12px + ((100vw - 380px) * 2 / 900)), 14px);
+  --link-size: clamp(10px, calc(10px + ((100vw - 380px) * 2 / 900)), 12px);
+  --text-family: 'Urbane-Medium', sans-serif;
+  --h-family: 'RubikMonoOne-Regular', sans-serif;
+
+  /* Bandcamp iframe sizing variables (override by media queries) */
+  --bc-iframe-width: 280px;
+  --bc-iframe-height: 394px;
+  --bc-iframe-aspect: 280 / 394;
+
+  // Colors
+  --black-color: #1D1B16;
+  --white-color: #FBF7F2;
+  --light-grey-color: #F5F5F5;
+  --blue-btn-color: #00A5C0;
+  --blue-hover-color: #00a5c0a8;
+  --blue-active-color: #007ac0;
+  --gold-color: #CC9225;
+  --gold-hover-color: #cc9225a8;
+  --gold-active-color: #F8B000;
+  --brown-color: #A6876D;
+}

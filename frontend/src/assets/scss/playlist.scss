@@ -1,0 +1,107 @@
+.playlist {
+  width: 100%;
+  min-height: auto;
+  padding: var(--padding-top) var(--padding-right);
+  font-family: var(--text-family);
+
+  &__title {
+    font-size: var(--h2-size);
+    line-height: 48px;
+    margin-bottom: var(--mid-gap);
+    font-family: var(--h-family);
+  }
+
+  &__subtitle {
+    margin-bottom: var(--max-gap);
+    font-size: var(--text-size);
+    letter-spacing: 0.2px;
+  }
+
+  &__content {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--max-gap);
+    width: 100%;
+    margin-bottom: var(--max-gap);
+
+    /* used when collapsing */
+    position: relative;
+
+    &.playlist__content--collapsed {
+      /* max-height set from JS via --collapsed-height to avoid third-row bleed */
+      max-height: var(--collapsed-height);
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+      /* allow item shadows on the right to remain visible */
+      padding-right: 10px;
+      // box-sizing: border-box;
+    }
+
+    &.playlist__content--expanded {
+      max-height: none;
+      overflow: visible;
+      padding-right: 0;
+    }
+
+    .playlist__item {
+      padding: 5px;
+      background-color: var(--black-color);
+      border-radius: var(--card-border-radius);
+      box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease-in-out;
+
+      &:hover {
+        transform: translateY(-10px);
+      }
+
+      /* Ensure Bandcamp iframe adapts to viewport via CSS variables.
+         Inline width/height attributes from server may override stylesheet rules,
+         so use !important to ensure the responsive sizes apply. */
+      .playlist__iframe,
+      iframe {
+        display: block;
+        width: var(--bc-iframe-width);
+        max-width: 100%;
+        height: var(--bc-iframe-height);
+        aspect-ratio: var(--bc-iframe-aspect);
+        border: 0;
+      }
+
+      @media (max-width: 1024px) {
+        --bc-iframe-width: 220px;
+        --bc-iframe-height: 334px;
+        --bc-iframe-aspect: 220 / 334;
+      }
+
+      @media (max-width: 768px) {
+        --bc-iframe-width: 170px;
+        --bc-iframe-height: 284px;
+        --bc-iframe-aspect: 170 / 284;
+      }
+    }
+  }
+
+
+  &__toggle {
+    display: block;
+    width: 220px;
+    height: auto;
+    margin: 0 auto;
+    padding: var(--padding-top-btn) var(--padding-right);
+    background-color: var(--blue-btn-color);
+    color: var(--white-color);
+    font-family: var(--h-family);
+    font-size: var(--btn-size);
+    border-radius: var(--btn-border-radius);
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+      background-color: var(--blue-hover-color);
+    }
+
+    &:active {
+      background-color: var(--blue-active-color);
+    }
+  }
+}

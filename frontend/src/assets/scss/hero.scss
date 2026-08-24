@@ -1,0 +1,135 @@
+.hero {
+  /* Make hero take most of the viewport (accounting for header/footer)
+     and vertically center its content to avoid large empty gaps. */
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  padding: var(--padding-top) var(--padding-right);
+  overflow: hidden;
+
+  &__content {
+    flex: 1 1 50%;
+    flex-direction: column;
+    gap: var(--max-gap);
+    max-width: 65%;
+    height: auto;
+
+    .hero__title {
+      font-size: var(--h1-size);
+      color: var(--gold-color);
+      text-transform: uppercase;
+
+      .hero__title-subtitle {
+        margin-left: var(--min-gap);
+        font-size: var(--h1-size);
+        color: var(--black-color);
+        font-weight: 400;
+      }
+    }
+
+    .hero__subtitle {
+      margin-bottom: var(--max-gap);
+      font-size: var(--text-size);
+      font-weight: 400;
+      text-transform: none;
+      /* keep normal case */
+      line-height: 32px;
+      color: var(--black-color);
+      font-family: var(--text-family);
+    }
+
+    .hero__btn {
+      display: block;
+      width: auto;
+      max-width: 360px;
+      height: auto;
+      padding: var(--padding-top-btn) var(--padding-right-btn);
+      font-size: var(--btn-size);
+      font-family: var(--h-family);
+      text-align: center;
+      color: var(--white-color);
+      background-color: var(--blue-btn-color);
+      border-radius: var(--btn-border-radius);
+      transition: background-color 0.3s ease-in-out, outline 0.3s ease-in-out;
+
+      &:hover {
+        background-color: var(--blue-hover-color);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--blue-hover-color);
+        background-color: var(--blue-btn-color);
+      }
+
+      &:active {
+        background-color: var(--blue-active-color);
+      }
+
+      @media (max-width: 1024px) {
+        width: 60%;
+      }
+    }
+  }
+
+  &__img {
+    flex: 0 0 45%;
+    max-width: 460px;
+    width: 100%;
+    height: 100%;
+    /* Ensure the image covers the container without distortion */
+    object-fit: cover;
+    box-shadow: 20px 15px 20px rgba(0, 0, 0, 0.35);
+    border-radius: var(--btn-border-radius);
+
+    @media (min-width: 1600px) {
+      max-width: 420px;
+    }
+
+    @media (max-width: 1024px) {
+      max-width: 280px;
+      box-shadow: 15px 10px 25px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--max-gap);
+
+    &__content {
+      order: 2;
+      max-width: 100%;
+      text-align: center;
+      align-items: center;
+
+      .hero__title {
+        .hero__title-subtitle {
+          margin-left: 6px;
+        }
+      }
+
+      .hero__subtitle {
+        line-height: 28px;
+      }
+
+      .hero__btn {
+        width: 50%;
+
+        @media (max-width: 480px) {
+          width: 70%;
+        }
+      }
+    }
+
+    &__img {
+      order: 1;
+      max-width: 320px;
+      box-shadow: 20px 15px 20px rgba(0, 0, 0, 0.35);
+
+      @media (max-width: 480px) {
+        max-width: 280px;
+        box-shadow: 15px 10px 25px rgba(0, 0, 0, 0.35);
+      }
+    }
+  }
+}

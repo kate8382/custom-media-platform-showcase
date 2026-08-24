@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  call-build:
+    uses: ./.github/workflows/build-reusable.yml
+    with:
+      run_videos: false
+      run_e2e: true
+      upload_artifact: true
+      do_deploy: false

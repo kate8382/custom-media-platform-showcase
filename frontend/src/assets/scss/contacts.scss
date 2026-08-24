@@ -1,0 +1,184 @@
+.contacts {
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--mid-gap);
+  width: 100%;
+  min-height: auto;
+  padding: var(--padding-top) var(--padding-right);
+  background-color: var(--black-color);
+  overflow: hidden;
+  color: var(--white-color);
+  font-family: var(--text-family);
+
+  /* Background image layer with controllable opacity */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('../img/generated/contacts-img-1200.png');
+    background-size: 50% 100%;
+    background-position: right top;
+    background-repeat: no-repeat;
+    opacity: 0.35;
+    /* set desired opacity here */
+    pointer-events: none;
+
+    @media (max-width: 768px) {
+      background-size: 100% 100%;
+      background-position: center top;
+      opacity: 0.25;
+    }
+  }
+
+  &__title {
+    z-index: 1;
+    font-size: var(--h2-size);
+    line-height: 30px;
+    font-family: var(--h-family);
+  }
+
+  &__subtitle {
+    z-index: 1;
+    width: 80%;
+    margin-bottom: var(--min-gap);
+    font-size: var(--text-size);
+    letter-spacing: 0.2px;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  /* Contact form styles */
+  .contacts__form {
+    z-index: 1;
+    flex-direction: column;
+    gap: var(--mid-gap);
+    width: 45%;
+    margin-bottom: var(--mid-gap);
+
+    @media (max-width: 768px) {
+      width: 80%;
+    }
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+
+    .contacts__form label {
+      font-size: var(--input-size);
+      color: var(--white-color);
+    }
+
+    .contacts__form-input {
+      width: 100%;
+      min-height: 48px;
+      padding: var(--padding-top-btn);
+      border-radius: var(--btn-border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--white-color);
+      font-size: var(--input-size);
+      transition: border-color 0.3s ease-in-out;
+
+      &:focus {
+        outline: 2px solid var(--gold-hover-color);
+        border-color: var(--gold-color);
+      }
+    }
+
+    textarea.contacts__form-input {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .contacts__form-row {
+      flex-direction: column;
+      gap: var(--min-gap);
+
+      .contacts__form-btn {
+        width: 220px;
+        height: auto;
+        padding: var(--padding-top-btn) var(--padding-right-btn);
+        color: var(--white-color);
+        font-family: var(--h-family);
+        font-size: var(--btn-size);
+        border-radius: var(--btn-border-radius);
+        background: var(--blue-btn-color);
+        transition: background-color 0.3s ease-in-out, outline 0.3s ease-in-out;
+
+        &:hover {
+          background-color: var(--blue-hover-color);
+        }
+
+        &:focus-visible {
+          outline: 2px solid var(--blue-hover-color);
+          background-color: var(--blue-btn-color);
+        }
+
+        &:active {
+          background-color: var(--blue-active-color);
+        }
+      }
+    }
+
+    /* Status message shown after form submit (sibling of the submit button) */
+    .contacts__form-status {
+      font-size: var(--link-size);
+      color: var(--white-color);
+      opacity: 0.9;
+
+      /* The status element itself receives `form-status` and `success|error` classes. */
+      &.form-status.error {
+        color: #ff6b6b;
+      }
+
+      &.form-status.success {
+        color: #8ee07a;
+      }
+    }
+  }
+
+  &__link {
+    z-index: 1;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--mid-gap);
+    width: 100%;
+    height: auto;
+
+    .contacts__link-text {
+      font-size: var(--btn-size);
+    }
+
+    .contacts__link-facebook {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      transition: color 0.3s ease-in-out, outline 0.3s ease-in-out;
+
+      &:focus-visible {
+        outline: 2px solid var(--gold-hover-color);
+        color: var(--gold-color);
+      }
+
+      .icon-facebook {
+        width: 100%;
+        height: 100%;
+        color: var(--gold-color);
+        transition: color 0.3s ease-in-out;
+
+        &:hover {
+          color: var(--gold-hover-color);
+        }
+
+        &:active {
+          color: var(--gold-active-color);
+        }
+      }
+    }
+  }
+}

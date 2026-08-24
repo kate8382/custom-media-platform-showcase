@@ -1,0 +1,93 @@
+{
+  "name": "custom-media-platform-showcase",
+  "author": {
+    "name": "Ecaterina Sevciuc",
+    "email": "e.sevciuc82@gmail.com"
+  },
+  "collaborators": [
+    {
+      "name": "David H. Watson",
+      "email": "hiranwatson@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "lint": "eslint \"frontend/src/**/*.{js,jsx}\" --quiet",
+    "lint:fix": "eslint \"frontend/src/**/*.{js,jsx}\" --fix",
+    "format": "prettier --write \"frontend/src/**/*.{js,jsx,css,scss,md}\"",
+    "format:check": "prettier --check \"frontend/src/**/*.{js,jsx,css,scss,md}\"",
+    "prepare": "husky install",
+    "build:frontend": "node ./build-tools/gen-images.cjs && node ./build-tools/gen-videos.cjs && vite build",
+    "build:backend": "node backend/build.js",
+    "build:all": "npm run build:frontend && npm run build:backend",
+    "preview": "vite preview",
+    "start:backend": "node dist/backend/server.js",
+    "start:frontend": "vite preview --port 5173",
+    "start:all": "concurrently \"npm run start:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "vite",
+    "dev:backend": "nodemon backend/server.js",
+    "dev:all": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "test": "vitest --environment jsdom",
+    "test:coverage": "vitest --coverage --environment jsdom --run --maxWorkers=1",
+    "test:watch": "vitest --watch --environment jsdom",
+    "test:backend": "vitest --config=vitest.backend.config.js --run",
+    "test:all": "npm run test && npm run test:backend",
+    "e2e:install": "npx playwright install --with-deps",
+    "test:e2e": "npx playwright test --config=e2e/playwright.config.cjs",
+    "gen:images": "node ./build-tools/gen-images.cjs",
+    "gen:videos": "node ./build-tools/gen-videos.cjs",
+    "gen:audio": "node ./build-tools/gen-audio.cjs",
+    "clean:modules": "npx rimraf node_modules",
+    "reinstall": "npm run clean:modules && npm cache clean --force && npm install"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@vitest/coverage-istanbul": "^4.1.10",
+    "concurrently": "^10.0.3",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "ffmpeg-static": "^5.3.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "husky": "^9.1.7",
+    "jsdom": "^29.1.1",
+    "lint-staged": "^17.0.8",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.9.5",
+    "rimraf": "^6.1.3",
+    "sass": "^1.101.0",
+    "sharp": "^0.34.5",
+    "supertest": "^7.2.2",
+    "vite": "^8.1.4",
+    "vite-imagetools": "^10.0.1",
+    "vitest": "^4.1.10"
+  },
+  "lint-staged": {
+    "frontend/src/**/*.{js,jsx}": [
+      "eslint --fix"
+    ],
+    "frontend/src/**/*.{js,jsx,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@ts-ffmpeg/fluent-ffmpeg": "^2.2.6",
+    "ajv": "^8.20.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "ffprobe-static": "^3.1.0",
+    "nodemailer": "^9.0.3",
+    "playwright": "^1.61.1",
+    "validator": "^13.15.35"
+  },
+  "allowScripts": {
+    "ffmpeg-static@5.3.0": true,
+    "sharp@0.34.5": true,
+    "sharp@0.35.3": true,
+    "@parcel/watcher@2.5.6": true
+  }
+}

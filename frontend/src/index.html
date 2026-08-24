@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- Provide explicit sizes so browsers can pick the best icon. Using the existing PNG for multiple sizes
+      until properly generated icons are added. Replace these with real 16/32/64 PNGs in production. -->
+    <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="16x16 32x32 64x64">
+    <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="32x32">
+    <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="16x16">
+    <!-- Apple touch icon for iOS home screen bookmarks. Use same source as a fallback. -->
+    <link href="./assets/img/favicon.png" rel="apple-touch-icon" sizes="180x180">
+    <!-- Theme color for mobile UI. Adjust to match site palette if desired. -->
+    <meta name="theme-color" content="#000000">
+  <title>Custom Media Platform Showcase</title>
+  <link href="./assets/scss/normalize.scss" rel="stylesheet">
+  <link href="./assets/scss/style.scss" rel="stylesheet">
+  <script src="./assets/js/main.js" type="module"></script>
+</head>
+
+<body>
+  <div class="container flex" id="home">
+    <header class="header flex" id="header">
+      <div class="header__logo">
+        <picture>
+          <source type="image/webp" srcset="
+                ./assets/img/generated/full-logo-200.webp 200w,
+                ./assets/img/generated/full-logo-400.webp 400w,
+                ./assets/img/generated/full-logo-800.webp 800w
+              " sizes="(max-width: 400px) 120px, (max-width: 1024px) 200px, 280px">
+          <img class="header__logo-img" src="./assets/img/originals/full-logo.png" srcset="
+                ./assets/img/generated/full-logo-200.png 200w,
+                ./assets/img/generated/full-logo-400.png 400w,
+                ./assets/img/generated/full-logo-800.png 800w
+              " sizes="(max-width: 400px) 120px, (max-width: 1024px) 200px, 280px" alt="Logo" loading="lazy">
+
+        </picture>
+      </div>
+      <nav class="header__nav" id="mainNav" aria-label="Main navigation">
+        <ul class="header__nav-list flex">
+          <li class="header__nav-item"><a class="header__nav-link" href="#home">Home</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#about">About</a></li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#playlist">Music</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#gallery">Gallery</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#contacts">Email&nbsp;Me</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="header__burger" id="headerBurger" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <svg aria-hidden="true" width="32" height="24" viewBox="0 0 32 24" role="img" focusable="false">
+          <rect x="0" y="1" width="32" height="3" rx="1.5" fill="currentColor"></rect>
+          <rect x="0" y="8" width="32" height="3" rx="1.5" fill="currentColor"></rect>
+          <rect x="0" y="15" width="32" height="3" rx="1.5" fill="currentColor"></rect>
+          <rect x="0" y="22" width="32" height="3" rx="1.5" fill="currentColor"></rect>
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero flex" id="hero">
+        <div class="hero__content flex">
+          <h1 class="hero__title"></h1>
+
+          <p class="hero__subtitle">
+          </p>
+          <a class="hero__btn" id="bandcampBtn" href="https://richardhiggins1.bandcamp.com/" aria-label="Open Bandcamp" target="_blank" rel="noopener noreferrer">
+          </a>
+        </div>
+        <picture>
+          <source type="image/webp" srcset="./assets/img/generated/hero-img-1200.webp">
+          <img class="hero__img" src="./assets/img/generated/hero-img-1200.png" alt="" loading="lazy">
+        </picture>
+      </section>
+
+      <section class="about" id="about">
+
+        <div class="about__content">
+          <div class="about__block">
+            <h2 class="about__title"></h2>
+            <p class="about__paragraph">
+            </p>
+
+            <p class="about__paragraph">
+            </p>
+          </div>
+
+          <div class="about__block third flex">
+            <div class="about__text-content flex">
+              <p class="about__paragraph">
+              </p>
+
+              <p class="about__paragraph">
+              </p>
+            </div>
+
+            <div class="about__media">
+              <div class="about__video">
+                <video class="about__video-player" aria-label="Video of Sun, Sand, and Sea" controls preload="metadata" playsinline muted>
+                  <source src="./assets/video/generated/sun-sand-and-sea.webm" type="video/webm">
+                  <source src="./assets/video/generated/sun-sand-and-sea.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="playlist" id="playlist">
+        <h2 class="playlist__title"></h2>
+        <p class="playlist__subtitle">
+        </p>
+
+        <ul class="playlist__content flex" id="playList"></ul>
+      </section>
+
+      <section class="gallery flex" id="gallery">
+        <h2 class="gallery__title">Gallery</h2>
+
+        <div class="gallery__collection">
+          <h3 class="gallery__subtitle"></h3>
+
+          <ul class="gallery__list gallery__list-1 flex">
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-11-400.webp   400w,
+                      ./assets/img/generated/gallery-11-800.webp   800w,
+                      ./assets/img/generated/gallery-11-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 400px">
+                <img src="./assets/img/generated/gallery-11-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-11-400.jpg   400w,
+                      ./assets/img/generated/gallery-11-800.jpg   800w,
+                      ./assets/img/generated/gallery-11-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 400px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-12-400.webp   400w,
+                      ./assets/img/generated/gallery-12-800.webp   800w,
+                      ./assets/img/generated/gallery-12-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 400px">
+                <img src="./assets/img/generated/gallery-12-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-12-400.jpg   400w,
+                      ./assets/img/generated/gallery-12-800.jpg   800w,
+                      ./assets/img/generated/gallery-12-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 400px" loading="lazy" alt="">
+              </picture>
+            </li>
+          </ul>
+        </div>
+
+        <div class="gallery__collection">
+          <h3 class="gallery__subtitle"></h3>
+
+          <ul class="gallery__list gallery__list-2 flex">
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-1-400.webp   400w,
+                      ./assets/img/generated/gallery-1-800.webp   800w,
+                      ./assets/img/generated/gallery-1-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-1-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-1-400.jpg   400w,
+                      ./assets/img/generated/gallery-1-800.jpg   800w,
+                      ./assets/img/generated/gallery-1-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-2-400.webp   400w,
+                      ./assets/img/generated/gallery-2-800.webp   800w,
+                      ./assets/img/generated/gallery-2-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-2-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-2-400.jpg   400w,
+                      ./assets/img/generated/gallery-2-800.jpg   800w,
+                      ./assets/img/generated/gallery-2-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-3-400.webp   400w,
+                      ./assets/img/generated/gallery-3-800.webp   800w,
+                      ./assets/img/generated/gallery-3-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-3-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-3-400.jpg   400w,
+                      ./assets/img/generated/gallery-3-800.jpg   800w,
+                      ./assets/img/generated/gallery-3-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-4-400.webp   400w,
+                      ./assets/img/generated/gallery-4-800.webp   800w,
+                      ./assets/img/generated/gallery-4-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-4-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-4-400.jpg   400w,
+                      ./assets/img/generated/gallery-4-800.jpg   800w,
+                      ./assets/img/generated/gallery-4-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-5-400.webp   400w,
+                      ./assets/img/generated/gallery-5-800.webp   800w,
+                      ./assets/img/generated/gallery-5-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-5-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-5-400.jpg   400w,
+                      ./assets/img/generated/gallery-5-800.jpg   800w,
+                      ./assets/img/generated/gallery-5-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-6-400.webp   400w,
+                      ./assets/img/generated/gallery-6-800.webp   800w,
+                      ./assets/img/generated/gallery-6-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-6-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-6-400.jpg   400w,
+                      ./assets/img/generated/gallery-6-800.jpg   800w,
+                      ./assets/img/generated/gallery-6-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-7-400.webp   400w,
+                      ./assets/img/generated/gallery-7-800.webp   800w,
+                      ./assets/img/generated/gallery-7-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-7-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-7-400.jpg   400w,
+                      ./assets/img/generated/gallery-7-800.jpg   800w,
+                      ./assets/img/generated/gallery-7-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-8-400.webp   400w,
+                      ./assets/img/generated/gallery-8-800.webp   800w,
+                      ./assets/img/generated/gallery-8-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-8-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-8-400.jpg   400w,
+                      ./assets/img/generated/gallery-8-800.jpg   800w,
+                      ./assets/img/generated/gallery-8-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-9-400.webp   400w,
+                      ./assets/img/generated/gallery-9-800.webp   800w,
+                      ./assets/img/generated/gallery-9-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-9-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-9-400.jpg   400w,
+                      ./assets/img/generated/gallery-9-800.jpg   800w,
+                      ./assets/img/generated/gallery-9-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="
+                      ./assets/img/generated/gallery-10-400.webp   400w,
+                      ./assets/img/generated/gallery-10-800.webp   800w,
+                      ./assets/img/generated/gallery-10-1200.webp 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px">
+                <img src="./assets/img/generated/gallery-10-1200.jpg" aria-label="" srcset="
+                      ./assets/img/generated/gallery-10-400.jpg   400w,
+                      ./assets/img/generated/gallery-10-800.jpg   800w,
+                      ./assets/img/generated/gallery-10-1200.jpg 1200w
+                    " sizes="(max-width: 600px) 100vw, (max-width: 1024px) 45vw, 360px" loading="lazy" alt="">
+              </picture>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="contacts flex" id="contacts">
+        <h3 class="contacts__title">Get in touch</h3>
+        <p class="contacts__subtitle"></p>
+
+        <form class="contacts__form flex" id="contactsForm" data-email-service data-email-template data-email-user novalidate>
+          <label for="name">Name</label>
+          <input class="contacts__form-input" id="name" name="name" placeholder="Your Name" type="text" required>
+
+          <label for="email">Email</label>
+          <input class="contacts__form-input" id="email" name="email" placeholder="Your Email" type="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+
+          <label for="message">Message</label>
+          <textarea class="contacts__form-input" id="message" name="message" required minlength="20" placeholder="Please enter your message"></textarea>
+
+          <div class="contacts__form-row flex">
+            <div class="contacts__form-status" id="contactsFormStatus" aria-live="polite"></div>
+            <button class="contacts__form-btn" id="contactsFormSend" type="submit">Send</button>
+          </div>
+        </form>
+
+        <div class="contacts__link flex">
+          <p class="contacts__link-text">Let&rsquo;s connect on&nbsp;Facebook:</p>
+
+          <a class="contacts__link-facebook" href="https://www.facebook.com/richard.higgins.5201" data-app="facebook" aria-label="Open Facebook" target="_blank" rel="noopener noreferrer">
+            <svg class="icon-facebook" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="16" fill="currentColor"></circle>
+              <path d="M20 8H17.6C16.5391 8 15.5217 8.42143 14.7716 9.17157C14.0214 9.92172 13.6 10.9391 13.6 12V14.4H11.2V17.6H13.6V24H16.8V17.6H19.2L20 14.4H16.8V12C16.8 11.7878 16.8843 11.5843 17.0343 11.4343C17.1843 11.2843 17.3878 11.2 17.6 11.2H20V8Z" stroke="#F5F5F5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">&copy;&nbsp;2026 Custom Media Platform Showcase. All rights reserved.</p>
+    </footer>
+  </div>
+</body>
+
+</html>

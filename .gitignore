@@ -1,0 +1,37 @@
+# --- Project Specific ---
+# Ignore the entire legacy folder and the large backup file
+past-versions/
+*.wpress
+
+# Adding local audio folder:
+rh-audio/
+
+# --- System Files ---
+# Ignore OS-generated metadata (especially important for collaborators)
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# --- Development Tools ---
+# Ignore VS Code settings and local environment files
+.vscode/
+.env
+*.log
+
+# Ignore Node specific files and folders
+node_modules/
+
+# Ignore dev-specific folders whose content shouldn't be part of the repo
+dist/
+build/
+
+# Ignore local PR/ISSUE drafts
+.github/ISSUE/
+.github/PR/
+
+# Generated images & videos from local scripts
+frontend/src/assets/img/generated/
+frontend/src/assets/video/generated/
+frontend/src/dist/
+coverage/
+test-results/

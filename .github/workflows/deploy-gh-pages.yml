@@ -1,0 +1,20 @@
+name: Pages
+
+on:
+  push:
+    branches: [ main ]
+
+# Grant the workflow token permission to push to the repository and update Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  call-build-and-deploy:
+    uses: ./.github/workflows/build-reusable.yml
+    with:
+      run_videos: true
+      run_e2e: false
+      upload_artifact: false
+      do_deploy: true

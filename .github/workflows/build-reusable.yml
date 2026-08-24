@@ -1,0 +1,176 @@
+name: Reusable build
+
+on:
+  workflow_call:
+    inputs:
+      run_videos:
+        required: false
+        type: boolean
+        default: false
+      upload_artifact:
+        required: false
+        type: boolean
+        default: false
+      run_e2e:
+        required: false
+        type: boolean
+        default: false
+      do_deploy:
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Check Prettier formatting
+        run: npm run format:check
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Run backend unit tests
+        run: npm run test:backend
+
+      - name: Run coverage (CI)
+        run: npm run test:coverage
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Cache generated images
+        id: image-cache
+        uses: actions/cache@v4
+        with:
+          path: frontend/src/assets/img/generated
+          key: |
+            images-generated-${{ runner.os }}-${{ hashFiles('frontend/src/assets/img/originals/**') }}
+          restore-keys: |
+            images-generated-${{ runner.os }}-
+
+      - name: Cache generated videos
+        id: video-cache
+        uses: actions/cache@v4
+        with:
+          path: frontend/src/assets/video/generated
+          key: |
+            video-generated-${{ runner.os }}-${{ hashFiles('frontend/src/assets/video/**') }}
+          restore-keys: |
+            video-generated-${{ runner.os }}-
+
+      - name: Build frontend and start servers (background)
+        shell: bash
+        run: |
+          echo "Building frontend..."
+          # generate images only when cache miss
+          if [ "${{ steps.image-cache.outputs.cache-hit }}" != 'true' ]; then
+            echo "No image cache hit — generating images"
+            npm run gen:images
+          else
+            echo "Image cache hit — skipping image generation"
+          fi
+          # generate videos only when requested and cache miss
+          if [ "${{ inputs.run_videos }}" = 'true' ] && [ "${{ steps.video-cache.outputs.cache-hit }}" != 'true' ]; then
+            echo "No video cache hit and run_videos=true — installing ffmpeg and generating videos"
+            sudo apt-get update && sudo apt-get install -y ffmpeg
+            npm run gen:videos
+          else
+            echo "Video cache hit or run_videos not requested — skipping video generation"
+          fi
+          # build frontend (skip embedded generation steps by running vite directly)
+          npx vite build
+          echo "Starting backend and preview frontend in background, logging to ci-servers.log"
+          # start backend + frontend preview in background and capture logs
+          nohup npx concurrently "node backend/server.js" "npm run start:frontend" > ci-servers.log 2>&1 &
+          # wait for frontend to respond (max ~150s)
+          for i in $(seq 1 75); do
+            if curl -sS http://localhost:5173/ > /dev/null; then
+              echo "frontend ready"
+              break
+            fi
+            echo "waiting for frontend... ($i)"
+            sleep 2
+          done
+          echo "---- ci-servers.log (tail) ----"
+          tail -n 200 ci-servers.log || true
+
+      - name: Run Playwright E2E
+        env:
+          CI_REUSE_SERVERS: 'true'
+        run: npx playwright test --config=e2e/playwright.config.cjs --workers=1 --retries=1
+
+
+      # upload artifacts and deploy steps are optional and controlled by workflow inputs
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage/lcov.info
+          flags: frontend
+          fail_ci_if_error: false
+          verbose: true
+
+      - name: Upload test-results artifact
+        if: ${{ inputs.upload_artifact }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results
+          if-no-files-found: warn
+          retention-days: 1
+
+      # images/videos generation and caching handled earlier before build
+
+      - name: Vite build (frontend)
+        run: npm run build:frontend
+
+      - name: Build backend
+        run: npm run build:backend
+
+      - name: Archive dist
+        run: |
+          if [ -d dist ]; then
+            if command -v zip >/dev/null 2>&1; then
+              zip -r dist.zip dist -x "*.mp4" "*.webm" || true
+            fi
+            tar -czf dist.tar.gz --exclude='*.mp4' --exclude='*.webm' dist || true
+          else
+            echo "No dist folder to archive"
+          fi
+
+      - name: Upload dist archive
+        if: ${{ inputs.upload_artifact && (startsWith(github.ref, 'refs/tags/') || github.event_name == 'release') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: |
+            dist.zip
+            dist.tar.gz
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Deploy to GitHub Pages (peaceiris)
+        if: ${{ inputs.do_deploy }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # Prefer a PAT stored in secrets.PAGES_PAT (recommended for private repos).
+          # Fallback to GITHUB_TOKEN if PAT is not provided.
+          github_token: ${{ secrets.PAGES_PAT || secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/frontend
