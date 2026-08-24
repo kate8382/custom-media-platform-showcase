@@ -111,9 +111,14 @@ jobs:
           fi
           # build frontend (skip embedded generation steps by running vite directly)
           npx vite build
-          echo "Starting backend and preview frontend in background, logging to ci-servers.log"
+          echo "Starting backend (if present) and preview frontend in background, logging to ci-servers.log"
           # start backend + frontend preview in background and capture logs
-          nohup npx concurrently "node backend/server.js" "npm run start:frontend" > ci-servers.log 2>&1 &
+          if [ -d backend ] && [ -f backend/server.js ]; then
+            nohup npx concurrently "node backend/server.js" "npm run start:frontend" > ci-servers.log 2>&1 &
+          else
+            echo "Backend not present — starting frontend preview only"
+            nohup npm run start:frontend > ci-servers.log 2>&1 &
+          fi
           # wait for frontend to respond (max ~150s)
           for i in $(seq 1 75); do
             if curl -sS http://localhost:5173/ > /dev/null; then
@@ -127,9 +132,17 @@ jobs:
           tail -n 200 ci-servers.log || true
 
       - name: Run Playwright E2E
+        shell: bash
         env:
           CI_REUSE_SERVERS: 'true'
-        run: npx playwright test --config=e2e/playwright.config.cjs --workers=1 --retries=1
+        run: |
+          # Only run e2e when backend is present (tests expect server-inserted data)
+          if [ -d backend ]; then
+            echo "Backend present — running Playwright E2E"
+            npx playwright test --config=e2e/playwright.config.cjs --workers=1 --retries=1
+          else
+            echo "Backend not present — skipping Playwright E2E"
+          fi
 
 
       # upload artifacts and deploy steps are optional and controlled by workflow inputs
