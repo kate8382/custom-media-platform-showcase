@@ -48,7 +48,21 @@ jobs:
         run: npm test
 
       - name: Run backend unit tests
-        run: npm run test:backend
+        # run: npm run test:backend
+        shell: bash
+        run: |
+          # Skip backend tests when backend folder or test files are not present
+          if [ -d backend ]; then
+            # Look for common test file patterns under backend
+            if find backend -type f \( -name "*.test.*" -o -name "*.spec.*" \) | grep -q .; then
+              echo "Found backend tests — running..."
+              npm run test:backend
+            else
+              echo "No backend test files found — skipping backend tests"
+            fi
+          else
+            echo "No backend folder found — skipping backend tests"
+          fi
 
       - name: Run coverage (CI)
         run: npm run test:coverage
