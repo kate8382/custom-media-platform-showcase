@@ -169,7 +169,15 @@ jobs:
         run: npm run build:frontend
 
       - name: Build backend
-        run: npm run build:backend
+        shell: bash
+        run: |
+          # Skip backend build if backend folder or build script is missing
+          if [ -d backend ] && [ -f backend/build.js ]; then
+            echo "Building backend..."
+            npm run build:backend
+          else
+            echo "No backend folder or build script found — skipping backend build"
+          fi
 
       - name: Archive dist
         run: |
