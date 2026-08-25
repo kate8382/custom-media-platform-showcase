@@ -64,7 +64,10 @@
           border: 1px solid rgba(251, 247, 242, 0.5);
           box-shadow: 0 4px 12px rgba(251, 247, 242, 0.3);
           border-radius: var(--card-border-radius);
-          transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          transition:
+            transform 0.3s ease-in-out,
+            border-color 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out;
 
           &:hover {
             transform: translateY(-4px);
@@ -128,7 +131,10 @@
           box-shadow: 0 6px 18px rgba(251, 247, 242, 0.3);
           border-radius: var(--card-border-radius);
           aspect-ratio: 16 / 9;
-          transition: transform 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          transition:
+            transform 0.3s ease-in-out,
+            border-color 0.3s ease-in-out,
+            box-shadow 0.3s ease-in-out;
 
           &:hover {
             transform: translateY(-4px);
