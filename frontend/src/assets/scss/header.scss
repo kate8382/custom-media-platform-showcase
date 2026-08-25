@@ -4,8 +4,12 @@
   justify-content: space-between;
   width: 100%;
   height: auto;
-  padding: var(--padding-top-btn) var(--padding-right);
+  padding: var(--padding-top-btn) var(--padding-right) var(--padding-top-btn) var(--max-gap);
   background-color: var(--black-color);
+
+  @media (max-width: 1200px) {
+    padding: var(--padding-top-btn) var(--padding-right);
+  }
 
   &__logo {
     width: 30%;
@@ -15,17 +19,16 @@
     }
 
     &-img {
-      // width: 280px;
-      max-width: 100%;
+      width: 100%;
       margin-left: -14px;
 
       @media (max-width: 1024px) {
-        width: 200px;
+        width: 240px;
         max-width: 100%;
       }
 
       @media (max-width: 600px) {
-        width: 120px;
+        width: 180px;
         max-width: 100%;
         min-height: 32px;
       }
@@ -76,8 +79,7 @@
   /* Burger button (mobile) */
   .header__burger {
     display: none;
-    align-self: center;
-    padding: 8px;
+
     color: var(--white-color);
     background: none;
     outline: none;
@@ -97,6 +99,13 @@
   @media (max-width: 768px) {
     .header__burger {
       display: block;
+      width: 40px;
+      height: 32px;
+
+      &__icon {
+        width: 32px;
+        height: 24px;
+      }
     }
 
     /* hide desktop nav on small screens */

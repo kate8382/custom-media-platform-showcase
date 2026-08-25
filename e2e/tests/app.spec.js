@@ -112,7 +112,7 @@ test.beforeEach(async ({ page }) => {
   // Block heavy external requests that can cause flakiness
   await page.route('**/*', route => {
     const url = route.request().url();
-    if (url.includes('bandcamp.com') || url.includes('googletagmanager.com') || url.includes('google-analytics.com') || url.includes('doubleclick.net') || url.includes('googlesyndication.com')) {
+    if (url.includes('github.com') || url.includes('googletagmanager.com') || url.includes('google-analytics.com') || url.includes('doubleclick.net') || url.includes('googlesyndication.com')) {
       return route.abort();
     }
     return route.continue();
@@ -152,7 +152,7 @@ test('header navigation routes to sections', async ({ page }) => {
 
 test('hero bandcamp button opens Bandcamp link', async ({ page }) => {
   await page.goto('/', { waitUntil: 'domcontentloaded' });
-  const btn = page.locator('#bandcampBtn');
+  const btn = page.locator('#githubBtn');
   await expect(btn).toBeVisible();
 
   // Support both legacy `data-href` (button) and semantic `href` (anchor)
@@ -160,11 +160,11 @@ test('hero bandcamp button opens Bandcamp link', async ({ page }) => {
   const hrefAttr = await btn.getAttribute('href');
   const href = dataHref || hrefAttr;
   expect(href).toBeTruthy();
-  expect(href.includes('bandcamp')).toBeTruthy();
+  expect(href.includes('github.com')).toBeTruthy();
 
   await btn.click();
   const last = await page.evaluate(() => window.__last_open || null);
-  expect(last).toContain('bandcamp');
+  expect(last).toContain('github.com');
 });
 
 test('playlist page loads and has server-inserted items', async ({ page }) => {

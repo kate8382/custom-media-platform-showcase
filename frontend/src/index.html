@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <!-- Provide explicit sizes so browsers can pick the best icon. Using the existing PNG for multiple sizes
+  <link href="./assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <!-- Provide explicit sizes so browsers can pick the best icon. Using the existing PNG for multiple sizes
       until properly generated icons are added. Replace these with real 16/32/64 PNGs in production. -->
-    <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="16x16 32x32 64x64">
-    <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="32x32">
-    <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="16x16">
-    <!-- Apple touch icon for iOS home screen bookmarks. Use same source as a fallback. -->
-    <link href="./assets/img/favicon.png" rel="apple-touch-icon" sizes="180x180">
-    <!-- Theme color for mobile UI. Adjust to match site palette if desired. -->
-    <meta name="theme-color" content="#000000">
+  <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="16x16 32x32 64x64">
+  <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="32x32">
+  <link href="./assets/img/favicon.png" rel="icon" type="image/png" sizes="16x16">
+  <!-- Apple touch icon for iOS home screen bookmarks. Use same source as a fallback. -->
+  <link href="./assets/img/favicon.png" rel="apple-touch-icon" sizes="180x180">
+  <!-- Theme color for mobile UI. Adjust to match site palette if desired. -->
+  <meta name="theme-color" content="#000000">
   <title>Custom Media Platform Showcase</title>
   <link href="./assets/scss/normalize.scss" rel="stylesheet">
   <link href="./assets/scss/style.scss" rel="stylesheet">
@@ -29,12 +29,12 @@
                 ./assets/img/generated/full-logo-200.webp 200w,
                 ./assets/img/generated/full-logo-400.webp 400w,
                 ./assets/img/generated/full-logo-800.webp 800w
-              " sizes="(max-width: 400px) 120px, (max-width: 1024px) 200px, 280px">
+              " sizes="(max-width: 400px) 180px, (max-width: 1024px) 240px, 280px">
           <img class="header__logo-img" src="./assets/img/originals/full-logo.png" srcset="
                 ./assets/img/generated/full-logo-200.png 200w,
                 ./assets/img/generated/full-logo-400.png 400w,
                 ./assets/img/generated/full-logo-800.png 800w
-              " sizes="(max-width: 400px) 120px, (max-width: 1024px) 200px, 280px" alt="Logo" loading="lazy">
+              " sizes="(max-width: 400px) 180px, (max-width: 1024px) 240px, 280px" alt="Logo" loading="lazy">
 
         </picture>
       </div>
@@ -55,7 +55,7 @@
       </nav>
 
       <button class="header__burger" id="headerBurger" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <svg aria-hidden="true" width="32" height="24" viewBox="0 0 32 24" role="img" focusable="false">
+        <svg class="header__burger-icon" aria-hidden="true" width="32" height="24" viewBox="0 0 32 24" role="img" focusable="false">
           <rect x="0" y="1" width="32" height="3" rx="1.5" fill="currentColor"></rect>
           <rect x="0" y="8" width="32" height="3" rx="1.5" fill="currentColor"></rect>
           <rect x="0" y="15" width="32" height="3" rx="1.5" fill="currentColor"></rect>
@@ -67,16 +67,23 @@
     <main>
       <section class="hero flex" id="hero">
         <div class="hero__content flex">
-          <h1 class="hero__title"></h1>
+          <h1 class="hero__title">Modern Media Architecture</h1>
 
           <p class="hero__subtitle">
+            A&nbsp;lightweight, high-performance web showcase featuring custom audio streaming, modular router
+            architecture, and automated asset pipelines.
           </p>
-          <a class="hero__btn" id="bandcampBtn" href="https://richardhiggins1.bandcamp.com/" aria-label="Open Bandcamp" target="_blank" rel="noopener noreferrer">
+
+          <a class="hero__btn flex" id="githubBtn" href="https://github.com/kate8382/custom-media-platform-showcase.git" aria-label="Open GitHub" target="_blank" rel="noopener noreferrer">
+            <svg class="hero__btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 640 640">
+  <path fill="currentColor" d="M319.988 7.973C143.293 7.973 0 151.242 0 327.96c0 141.392 91.678 261.298 218.826 303.63 16.004 2.964 21.886-6.957 21.886-15.414 0-7.63-.319-32.835-.449-59.552-89.032 19.359-107.8-37.772-107.8-37.772-14.552-36.993-35.529-46.831-35.529-46.831-29.032-19.879 2.209-19.442 2.209-19.442 32.126 2.245 49.04 32.954 49.04 32.954 28.56 48.922 74.883 34.76 93.131 26.598 2.882-20.681 11.15-34.807 20.315-42.803-71.08-8.067-145.797-35.516-145.797-158.14 0-34.926 12.52-63.485 32.965-85.88-3.33-8.078-14.291-40.606 3.083-84.674 0 0 26.87-8.61 88.029 32.8 25.512-7.075 52.878-10.642 80.056-10.76 27.2.118 54.614 3.673 80.162 10.76 61.076-41.386 87.922-32.8 87.922-32.8 17.398 44.08 6.485 76.631 3.154 84.675 20.516 22.394 32.93 50.953 32.93 85.879 0 122.907-74.883 149.93-146.117 157.856 11.481 9.921 21.733 29.398 21.733 59.233 0 42.792-.366 77.28-.366 87.804 0 8.516 5.764 18.473 21.992 15.354 127.076-42.354 218.637-162.274 218.637-303.582 0-176.695-143.269-319.988-320-319.988l-.023.107z"></path>
+</svg>
+            Explore Repository
           </a>
         </div>
         <picture>
           <source type="image/webp" srcset="./assets/img/generated/hero-img-1200.webp">
-          <img class="hero__img" src="./assets/img/generated/hero-img-1200.png" alt="" loading="lazy">
+          <img class="hero__img" src="./assets/img/generated/hero-img-1200.png" alt="Hero Art Image" loading="lazy">
         </picture>
       </section>
 

@@ -33,18 +33,18 @@ class App {
 
   // Bandcamp button click handler — opens URL from `data-href` (preferred) or inner <a>
   setupBandcamp() {
-    const bandcampBtn = document.getElementById('bandcampBtn');
-    if (!bandcampBtn) return;
+    const githubBtn = document.getElementById('githubBtn');
+    if (!githubBtn) return;
 
-    bandcampBtn.addEventListener('click', (e) => {
+    githubBtn.addEventListener('click', (e) => {
       // Determine the target URL from multiple possible markup variants:
       // 1) `data-href` on the control (preferred)
       // 2) if the control is an <a>, use its `href`
       // 3) otherwise, look for an inner <a> and use its href
       const url =
-        bandcampBtn.dataset?.href ||
-        bandcampBtn.getAttribute?.('href') ||
-        bandcampBtn.querySelector?.('a')?.href;
+        githubBtn.dataset?.href ||
+        githubBtn.getAttribute?.('href') ||
+        githubBtn.querySelector?.('a')?.href;
       if (!url) return;
       e.preventDefault();
       try {
@@ -124,9 +124,9 @@ class App {
         }
 
         s.setAttribute('tabindex', '-1');
-        // eslint-disable-next-line no-unused-vars
         try {
           s.focus({ preventScroll: true });
+          // eslint-disable-next-line no-unused-vars
         } catch (e) {
           s.focus();
         }
@@ -234,7 +234,8 @@ class App {
   }
 
   // (legacy) no-op — already handled in the primary setupBandcamp above
-  setupBandcampLegacy() {}
+  // eslint-disable-next-line prettier/prettier
+  setupBandcampLegacy() { }
 
   // Main init function to set up the application
   init() {

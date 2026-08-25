@@ -3,7 +3,7 @@
 A high-performance, responsive single-page web architecture designed for audio streaming, dynamic Bandcamp integration, and custom media showcases.
 
 <p align="center">
-  <img src="frontend/src/assets/img/originals/hero-img.png" alt="Hero banner" />
+  <img src="frontend/src/assets/img/banner.png" alt="Banner" />
 </p>
 
 > Legacy client notes (redacted): [documentation/legacy-client-notes.md](documentation/legacy-client-notes.md)
@@ -22,11 +22,13 @@ This repository is an engineering showcase and portfolio piece demonstrating mod
 ### Project Resources
 
 1. **Audio Integration & Assets**
-  - Seamless Bandcamp player integration using dynamic JSON payload parsers and `iframe` embeds.
-  - Support for custom HTML5 audio fallback components and responsive media pipelines.
+
+- Seamless Bandcamp player integration using dynamic JSON payload parsers and `iframe` embeds.
+- Support for custom HTML5 audio fallback components and responsive media pipelines.
 
 2. **Design System & Assets**
-  - Custom design system built with modular SCSS, CSS `clamp()` for fluid typography, and responsive media layouts.
+
+- Custom design system built with modular SCSS, CSS `clamp()` for fluid typography, and responsive media layouts.
 
 ### Project Structure
 
@@ -43,86 +45,93 @@ This repository is an engineering showcase and portfolio piece demonstrating mod
 ### Development — Local setup
 
 1. **Node.js Environment**
-  - Recommended: Node.js 22.19.x or 24.x (LTS).
-  - Using `nvm` (or `nvm-windows`) is recommended to manage versions:
-    ```bash
-    nvm install 22.19.0
-    nvm use 22.19.0
-    ```
+
+- Recommended: Node.js 22.19.x or 24.x (LTS).
+- Using `nvm` (or `nvm-windows`) is recommended to manage versions:
+  ```bash
+  nvm install 22.19.0
+  nvm use 22.19.0
+  ```
 
 2. **Install dependencies**
-  ```bash
-  rm -rf node_modules package-lock.json
-  npm ci
-  ```
+
+```bash
+rm -rf node_modules package-lock.json
+npm ci
+```
 
 3. **Common npm scripts**
-  ```bash
-  npm run dev:frontend   # Vite dev server (HMR)
-  npm run dev:all        # Start backend (nodemon) + frontend dev server concurrently
-  npm run build:frontend # Build frontend production output
-  npm run build:backend  # Build backend output
-  npm run build:all      # Build both frontend and backend
-  npm run start:all      # Start preview/backend (or dev:all during development)
-  npm run lint           # Run ESLint
-  npm run format         # Run Prettier
-  ```
+
+```bash
+npm run dev:frontend   # Vite dev server (HMR)
+npm run dev:all        # Start backend (nodemon) + frontend dev server concurrently
+npm run build:frontend # Build frontend production output
+npm run build:backend  # Build backend output
+npm run build:all      # Build both frontend and backend
+npm run start:all      # Start preview/backend (or dev:all during development)
+npm run lint           # Run ESLint
+npm run format         # Run Prettier
+```
 
 4. **Husky (git hooks)**
-  ```bash
-  npm run prepare
-  ```
+
+```bash
+npm run prepare
+```
 
 5. **Asset pipelines (images, audio & video)**
-  - Put high-resolution source images in `frontend/src/assets/img/originals/`, audio in `frontend/src/assets/audio/`, and videos in `frontend/src/assets/video/`.
-  - Generate responsive image and video assets:
+
+- Put high-resolution source images in `frontend/src/assets/img/originals/`, audio in `frontend/src/assets/audio/`, and videos in `frontend/src/assets/video/`.
+- Generate responsive image and video assets:
+
+  ```bash
+  npm run gen:images
+  npm run gen:videos
+  ```
+
+- Audio generation & verification
+  - Generate WAV previews from source MP3s:
+    - POSIX: `npm run gen:audio`
+    - Windows (cmd/PowerShell): `npm run gen:audio` (use `set` to set env vars, see examples below)
+  - Force regeneration (overwrite existing generated files):
+    - POSIX: `FORCE=1 npm run gen:audio`
+    - Windows: `set FORCE=1&& npm run gen:audio`
+  - Skip writing into `dist/` when you only need source-side generated files:
+    - POSIX: `SKIP_DIST=1 npm run gen:audio`
+    - Windows: `set SKIP_DIST=1&& npm run gen:audio`
+  - Control verification step (ffprobe checks):
+    - To skip ffprobe verification: `VERIFY=0 npm run gen:audio` (POSIX) or `set VERIFY=0&& npm run gen:audio` (Windows).
+  - Generate a JSON report summarising source MP3 vs generated WAV files:
     ```bash
-    npm run gen:images
-    npm run gen:videos
+    node ./build-tools/report-audio.cjs
+    ```
+  - To remove generated audio files (cross-platform):
+    ```bash
+    npx rimraf frontend/src/assets/audio/generated dist/assets/audio
     ```
 
-  - Audio generation & verification
-    - Generate WAV previews from source MP3s:
-      - POSIX: `npm run gen:audio`
-      - Windows (cmd/PowerShell): `npm run gen:audio` (use `set` to set env vars, see examples below)
-    - Force regeneration (overwrite existing generated files):
-      - POSIX: `FORCE=1 npm run gen:audio`
-      - Windows: `set FORCE=1&& npm run gen:audio`
-    - Skip writing into `dist/` when you only need source-side generated files:
-      - POSIX: `SKIP_DIST=1 npm run gen:audio`
-      - Windows: `set SKIP_DIST=1&& npm run gen:audio`
-    - Control verification step (ffprobe checks):
-      - To skip ffprobe verification: `VERIFY=0 npm run gen:audio` (POSIX) or `set VERIFY=0&& npm run gen:audio` (Windows).
-    - Generate a JSON report summarising source MP3 vs generated WAV files:
-      ```bash
-      node ./build-tools/report-audio.cjs
-      ```
-    - To remove generated audio files (cross-platform):
-      ```bash
-      npx rimraf frontend/src/assets/audio/generated dist/assets/audio
-      ```
-
-  - Video cleaning & verification
-    - Quick clean of generated videos folder:
-      ```bash
-      node ./build-tools/gen-videos.cjs clean
-      # or via npm: npm run gen:videos -- clean
-      ```
-    - Force re-transcode all source videos:
-      - POSIX: `FORCE=1 npm run gen:videos`
-      - Windows: `set FORCE=1&& npm run gen:videos`
-    - `gen-videos` writes transcode logs to `frontend/src/assets/video/generated/logs/` and verifies durations (it will error on significant duration mismatches).
-
-  - Images: to clean generated images
+- Video cleaning & verification
+  - Quick clean of generated videos folder:
     ```bash
-    node ./build-tools/gen-images.cjs clean
-    # or: npm run gen:images -- clean
+    node ./build-tools/gen-videos.cjs clean
+    # or via npm: npm run gen:videos -- clean
     ```
+  - Force re-transcode all source videos:
+    - POSIX: `FORCE=1 npm run gen:videos`
+    - Windows: `set FORCE=1&& npm run gen:videos`
+  - `gen-videos` writes transcode logs to `frontend/src/assets/video/generated/logs/` and verifies durations (it will error on significant duration mismatches).
 
-  - Notes:
-    - Use `FORCE=1` when you changed source media and want to overwrite generated artifacts.
-    - Use `SKIP_DIST=1` during development to avoid writing into `dist/` when only source-side `generated/` files are needed.
-    - When working on Windows and setting multiple env vars, separate them with `&&` as shown above.
+- Images: to clean generated images
+
+  ```bash
+  node ./build-tools/gen-images.cjs clean
+  # or: npm run gen:images -- clean
+  ```
+
+- Notes:
+  - Use `FORCE=1` when you changed source media and want to overwrite generated artifacts.
+  - Use `SKIP_DIST=1` during development to avoid writing into `dist/` when only source-side `generated/` files are needed.
+  - When working on Windows and setting multiple env vars, separate them with `&&` as shown above.
 
 ### Collaboration Workflow
 
@@ -144,4 +153,5 @@ This repository is an engineering showcase and portfolio piece demonstrating mod
 - Integrated a testing setup (Vitest) with isolation for I/O and reduced flakiness in CI runs.
 
 ---
+
 Last Updated: August 2026
