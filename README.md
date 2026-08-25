@@ -1,5 +1,8 @@
 # Custom Media Platform Showcase
 
+[![CI](https://github.com/kate8382/custom-media-platform-showcase/actions/workflows/ci.yml/badge.svg)](https://github.com/kate8382/custom-media-platform-showcase/actions)
+[![Pages](https://github.com/kate8382/custom-media-platform-showcase/actions/workflows/deploy-gh-pages.yml/badge.svg)](https://github.com/kate8382/custom-media-platform-showcase/actions)
+
 A high-performance, responsive single-page web architecture designed for audio streaming, dynamic Bandcamp integration, and custom media showcases.
 
 <p align="center">
@@ -7,6 +10,8 @@ A high-performance, responsive single-page web architecture designed for audio s
 </p>
 
 > Legacy client notes (redacted): [documentation/legacy-client-notes.md](documentation/legacy-client-notes.md)
+
+> Testing & QA guide: [TESTS.md](TESTS.md)
 
 ### Project Goal
 
