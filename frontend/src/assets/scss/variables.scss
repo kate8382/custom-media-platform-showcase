@@ -20,6 +20,7 @@
   --h1-size: clamp(32px, calc(32px + ((100vw - 380px) * 16 / 900)), 48px);
   --h2-size: clamp(24px, calc(24px + ((100vw - 380px) * 12 / 900)), 36px);
   --h3-size: clamp(20px, calc(20px + ((100vw - 380px) * 10 / 900)), 30px);
+  --h4-size: clamp(18px, calc(18px + ((100vw - 380px) * 8 / 900)), 28px);
   --text-size: clamp(16px, calc(16px + ((100vw - 380px) * 8 / 900)), 24px);
   --btn-size: clamp(14px, calc(14px + ((100vw - 380px) * 2 / 900)), 16px);
   --input-size: clamp(12px, calc(12px + ((100vw - 380px) * 2 / 900)), 14px);

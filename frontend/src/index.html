@@ -76,8 +76,9 @@
 
           <a class="hero__btn flex" id="githubBtn" href="https://github.com/kate8382/custom-media-platform-showcase.git" aria-label="Open GitHub" target="_blank" rel="noopener noreferrer">
             <svg class="hero__btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 640 640">
-  <path fill="currentColor" d="M319.988 7.973C143.293 7.973 0 151.242 0 327.96c0 141.392 91.678 261.298 218.826 303.63 16.004 2.964 21.886-6.957 21.886-15.414 0-7.63-.319-32.835-.449-59.552-89.032 19.359-107.8-37.772-107.8-37.772-14.552-36.993-35.529-46.831-35.529-46.831-29.032-19.879 2.209-19.442 2.209-19.442 32.126 2.245 49.04 32.954 49.04 32.954 28.56 48.922 74.883 34.76 93.131 26.598 2.882-20.681 11.15-34.807 20.315-42.803-71.08-8.067-145.797-35.516-145.797-158.14 0-34.926 12.52-63.485 32.965-85.88-3.33-8.078-14.291-40.606 3.083-84.674 0 0 26.87-8.61 88.029 32.8 25.512-7.075 52.878-10.642 80.056-10.76 27.2.118 54.614 3.673 80.162 10.76 61.076-41.386 87.922-32.8 87.922-32.8 17.398 44.08 6.485 76.631 3.154 84.675 20.516 22.394 32.93 50.953 32.93 85.879 0 122.907-74.883 149.93-146.117 157.856 11.481 9.921 21.733 29.398 21.733 59.233 0 42.792-.366 77.28-.366 87.804 0 8.516 5.764 18.473 21.992 15.354 127.076-42.354 218.637-162.274 218.637-303.582 0-176.695-143.269-319.988-320-319.988l-.023.107z"></path>
-</svg>
+              <path fill="currentColor" d="M319.988 7.973C143.293 7.973 0 151.242 0 327.96c0 141.392 91.678 261.298 218.826 303.63 16.004 2.964 21.886-6.957 21.886-15.414 0-7.63-.319-32.835-.449-59.552-89.032 19.359-107.8-37.772-107.8-37.772-14.552-36.993-35.529-46.831-35.529-46.831-29.032-19.879 2.209-19.442 2.209-19.442 32.126 2.245 49.04 32.954 49.04 32.954 28.56 48.922 74.883 34.76 93.131 26.598 2.882-20.681 11.15-34.807 20.315-42.803-71.08-8.067-145.797-35.516-145.797-158.14 0-34.926 12.52-63.485 32.965-85.88-3.33-8.078-14.291-40.606 3.083-84.674 0 0 26.87-8.61 88.029 32.8 25.512-7.075 52.878-10.642 80.056-10.76 27.2.118 54.614 3.673 80.162 10.76 61.076-41.386 87.922-32.8 87.922-32.8 17.398 44.08 6.485 76.631 3.154 84.675 20.516 22.394 32.93 50.953 32.93 85.879 0 122.907-74.883 149.93-146.117 157.856 11.481 9.921 21.733 29.398 21.733 59.233 0 42.792-.366 77.28-.366 87.804 0 8.516 5.764 18.473 21.992 15.354 127.076-42.354 218.637-162.274 218.637-303.582 0-176.695-143.269-319.988-320-319.988l-.023.107z">
+              </path>
+            </svg>
             Explore Repository
           </a>
         </div>
@@ -88,36 +89,64 @@
       </section>
 
       <section class="about" id="about">
-
-        <div class="about__content">
-          <div class="about__block">
-            <h2 class="about__title"></h2>
-            <p class="about__paragraph">
-            </p>
-
-            <p class="about__paragraph">
+        <div class="about__container flex">
+          <div class="about__header">
+            <h2 class="about__title">About The Project</h2>
+            <p class="about__intro">
+              Custom Media Platform Showcase is&nbsp;a&nbsp;high-performance, responsive single-page architecture built for
+dynamic audio streaming, automated asset processing, and modular&nbsp;UI component delivery.
             </p>
           </div>
 
-          <div class="about__block third flex">
-            <div class="about__text-content flex">
-              <p class="about__paragraph">
-              </p>
+          <div class="about__content flex">
+            <ul class="about__list flex">
+              <li class="about__card">
+                <h3 class="about__card-title"><span class="about__card-icon">⚡</span> Modular Frontend</h3>
+                <p class="about__card-text">
+                  Built with zero-dependency Vanilla JS&nbsp;SPA router, class-based architecture, and SCSS fluid typography
+(<code class="code-tag">clamp()</code>) for smooth responsive scaling.
+                </p>
+              </li>
 
-              <p class="about__paragraph">
-              </p>
-            </div>
+              <li class="about__card">
+                <h3 class="about__card-title"><span class="about__card-icon">🎧</span> Dynamic Audio Pipeline</h3>
+                <p class="about__card-text">
+                  Custom JSON payload parser integration for Bandcamp audio streams, featuring embedded iframe controls and HTML5 fallback player support.
+                </p>
+              </li>
 
-            <div class="about__media">
-              <div class="about__video">
-                <video class="about__video-player" aria-label="Video of Sun, Sand, and Sea" controls preload="metadata" playsinline muted>
-                  <source src="./assets/video/generated/sun-sand-and-sea.webm" type="video/webm">
-                  <source src="./assets/video/generated/sun-sand-and-sea.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
+              <li class="about__card">
+                <h3 class="about__card-title"><span class="about__card-icon">🛠️</span> Automated Build Tools</h3>
+                <p class="about__card-text">
+                  Node.js CLI automation leveraging Sharp and FFmpeg to&nbsp;transcode WebM/MP4 video variants and build responsive WebP images on&nbsp;the fly.
+                </p>
+              </li>
+
+              <li class="about__card">
+                <h3 class="about__card-title"><span class="about__card-icon">🧪</span> Production QA&nbsp;&amp;&nbsp;CI</h3>
+                <p class="about__card-text">
+                  Comprehensive testing suite using Vitest and Playwright (E2E), enforced via ESLint flat configs, Prettier, and Husky pre-commit hooks.
+                </p>
+              </li>
+            </ul>
+
+            <div class="about__media-wrapper">
+              <div class="about__video-container">
+                <!-- Пока видео не записано, сюда можно временно поставить <img> с banner.png -->
+                <video class="about__video-player" aria-label="Platform Architecture Demo" controls autoplay loop muted playsinline poster="./assets/img/banner.png">
+                  <source src="./assets/video/generated/architecture-demo.webm" type="video/webm">
+                  <source src="./assets/video/generated/architecture-demo.mp4" type="video/mp4">
+                  Your browser does not support video streaming.
                 </video>
               </div>
+
+              <div class="about__media-caption">
+                <span>Architecture Showcase &amp;&nbsp;Media Pipeline Preview</span>
+              </div>
             </div>
+
           </div>
+
         </div>
       </section>
 

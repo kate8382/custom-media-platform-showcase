@@ -16,15 +16,9 @@
 
     .hero__title {
       font-size: var(--h1-size);
+      font-weight: 800;
       color: var(--gold-active-color);
-      // text-transform: uppercase;
-
-      .hero__title-subtitle {
-        margin-left: var(--min-gap);
-        font-size: var(--h1-size);
-        color: var(--black-color);
-        font-weight: 400;
-      }
+      text-transform: uppercase;
     }
 
     .hero__subtitle {
