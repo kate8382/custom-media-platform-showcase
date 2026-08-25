@@ -234,8 +234,9 @@ class App {
   }
 
   // (legacy) no-op — already handled in the primary setupBandcamp above
-  // eslint-disable-next-line prettier/prettier
-  setupBandcampLegacy() {}
+  setupBandcampLegacy() {
+    // This function is intentionally left empty as the Bandcamp button setup is handled in setupBandcamp()
+  }
 
   // Main init function to set up the application
   init() {
