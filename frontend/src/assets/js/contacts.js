@@ -20,7 +20,7 @@ export class ContactsForm {
     if (!this.form) return false;
     try {
       this.form.noValidate = true;
-    } catch (e) {}
+    } catch {}
 
     // Disable native required/minlength for the message field so JS shows a consistent message
     try {
@@ -30,7 +30,7 @@ export class ContactsForm {
         msgField.minLength = 0;
         if (msgField.removeAttribute) msgField.removeAttribute('minlength');
       }
-    } catch (e) {}
+    } catch {}
 
     console.debug && console.debug('[ContactsForm] init:', !!this.form);
 
@@ -153,7 +153,7 @@ export class ContactsForm {
           // show a generic failure message (tests expect a generic 'Failed to send')
           try {
             await res.json();
-          } catch (_) {}
+          } catch {}
           this.setStatus('Failed to send', false);
         }
       } else {
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
   try {
     const handler = new ContactsForm('#contactsForm');
     handler.init();
-  } catch (e) {}
+  } catch {}
 });
 
 export default ContactsForm;
