@@ -37,15 +37,14 @@
     .gallery__list {
       flex-wrap: wrap;
       gap: var(--max-gap);
-      justify-content: center;
-      /* center items and last row */
+      justify-content: space-around;
       align-items: flex-start;
       width: 100%;
 
       /* Unified item style: square tiles with cover-cropped images */
       .gallery__item {
-        flex: 1 1 220px;
-        max-width: 320px;
+        /* Prevent tiles from growing to fill a lone final row — keep consistent sizing */
+        flex: 0 1 320px;
         border-radius: var(--card-border-radius);
         box-shadow: 15px 10px 8px rgba(0, 0, 0, 0.35);
         aspect-ratio: 1 / 1;
@@ -75,11 +74,12 @@
       }
 
       /* On very narrow screens stack full width */
-      @media (max-width: 500px) {
+      @media (max-width: 768px) {
         .gallery__item {
+          /* stack full width on very narrow screens, keep square thumbnails */
           flex: 1 1 100%;
-          max-width: 100%;
-          aspect-ratio: 4 / 3;
+          max-width: 220px;
+          aspect-ratio: 1 / 1;
         }
       }
     }
