@@ -45,7 +45,7 @@ export class ContactsForm {
   setStatus(message, ok) {
     if (!this.statusEl) return;
     // debug
-    // eslint-disable-next-line no-console
+
     console.debug && console.debug('[ContactsForm] setStatus:', message, ok);
     if (this._clearTimer) {
       clearTimeout(this._clearTimer);
@@ -86,7 +86,7 @@ export class ContactsForm {
 
   async handleSubmit(e) {
     e.preventDefault();
-    // eslint-disable-next-line no-console
+
     console.debug && console.debug('[ContactsForm] handleSubmit start');
     const form = this.form;
 
@@ -121,6 +121,8 @@ export class ContactsForm {
 
     const name = form.querySelector('[name="name"]').value.trim();
     const email = form.querySelector('[name="email"]').value.trim();
+    const recipientField = form.querySelector('[name="recipient"]');
+    const recipient = recipientField ? recipientField.value.trim() : '';
     const message = form.querySelector('[name="message"]').value.trim();
 
     if (message.length < 20) {
@@ -141,7 +143,7 @@ export class ContactsForm {
         const res = await fetch(backendEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, email, message }),
+          body: JSON.stringify({ name, email, message, recipient }),
         });
 
         if (res.ok) {
@@ -155,9 +157,11 @@ export class ContactsForm {
           this.setStatus('Failed to send', false);
         }
       } else {
+        const to = recipient || '';
         const subject = encodeURIComponent('Frontend message from ' + name);
-        const body = encodeURIComponent('From: ' + name + ' <' + email + '>\\n\\n' + message);
-        window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+        const body = encodeURIComponent('From: ' + name + ' <' + email + '>\n\n' + message);
+        const mailto = 'mailto:' + encodeURIComponent(to) + '?subject=' + subject + '&body=' + body;
+        window.location.href = mailto;
         this.setStatus('Opened mail client as fallback.', true);
       }
     } catch (err) {
