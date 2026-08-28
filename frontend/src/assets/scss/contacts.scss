@@ -185,19 +185,64 @@
     }
   }
 
-  &__profiles {
-    gap: var(--mid-gap);
-    width: 80%;
-    font-size: var(--text-size);
+  .contacts__profiles {
+    z-index: 1;
+    align-items: center;
+    gap: var(--min-gap);
+    width: 100%;
+    font-size: 20px;
+
+    @media (max-width: 768px) {
+      flex-wrap: wrap;
+      font-size: 18px;
+    }
+
+    &-text {
+      width: auto;
+    }
 
     .contacts__profiles-list {
+      align-items: center;
       gap: var(--min-gap);
 
       .contacts__profile {
+        align-items: center;
         gap: var(--min-gap);
 
         .contacts__profile-links {
+          align-items: center;
           gap: var(--min-gap);
+
+          .link-gh,
+          .link-in {
+            transition: color 0.3s ease-in-out;
+
+            .gh-icon {
+              color: var(--gold-color);
+
+              &:hover {
+                color: var(--gold-hover-color);
+              }
+
+              &:focus,
+              &:active {
+                color: var(--gold-active-color);
+              }
+            }
+
+            .in-icon {
+              color: var(--blue-btn-color);
+
+              &:hover {
+                color: var(--blue-hover-color);
+              }
+
+              &:focus,
+              &:active {
+                color: var(--blue-active-color);
+              }
+            }
+          }
         }
       }
     }
