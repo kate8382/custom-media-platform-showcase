@@ -166,22 +166,6 @@ export class ContactsForm {
       }
     } catch (err) {
       console.error('Contact send error', err);
-      // If the backend is unreachable (network/proxy error), fall back to mailto so the user can still send.
-      try {
-        if (backendEndpoint) {
-          const to = recipient || '';
-          const subject = encodeURIComponent('Frontend message from ' + name);
-          const body = encodeURIComponent('From: ' + name + ' <' + email + '>\n\n' + message);
-          const mailto =
-            'mailto:' + encodeURIComponent(to) + '?subject=' + subject + '&body=' + body;
-          window.location.href = mailto;
-          this.setStatus('Opened mail client as fallback.', true);
-          return;
-        }
-      } catch (mailErr) {
-        console.error('Mailto fallback failed', mailErr);
-      }
-
       this.setStatus('Failed to send message. You can also email directly.', false);
     } finally {
       if (this.submitBtn) this.submitBtn.disabled = false;
