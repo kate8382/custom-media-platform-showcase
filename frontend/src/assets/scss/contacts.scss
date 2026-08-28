@@ -190,11 +190,10 @@
     align-items: center;
     gap: var(--min-gap);
     width: 100%;
-    font-size: 20px;
+    font-size: var(--text-size);
 
     @media (max-width: 768px) {
       flex-wrap: wrap;
-      font-size: 18px;
     }
 
     &-text {
