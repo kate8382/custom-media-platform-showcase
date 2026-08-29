@@ -6,7 +6,7 @@
 
   &__title {
     font-size: var(--h2-size);
-    line-height: 48px;
+    line-height: 1.2;
     margin-bottom: var(--mid-gap);
     font-family: var(--h-family);
   }
@@ -49,10 +49,13 @@
       background-color: var(--black-color);
       border-radius: var(--card-border-radius);
       box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.35);
-      transition: transform 0.3s ease-in-out;
+      transition:
+        transform 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out;
 
       &:hover {
-        transform: translateY(-10px);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 165, 192, 0.5);
       }
 
       /* Ensure Bandcamp iframe adapts to viewport via CSS variables.
