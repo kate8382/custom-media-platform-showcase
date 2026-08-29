@@ -35,9 +35,20 @@ module.exports = {
     // increase wait time for CI environments where installs/builds are slower
     timeout: isCI ? 300000 : 240000,
   },
-  projects: [
-    { name: 'chromium', use: { browserName: 'chromium', launchOptions: { args: ['--disable-dev-shm-usage'] } } },
-    { name: 'firefox', use: { browserName: 'firefox', launchOptions: { args: ['--disable-dev-shm-usage'] } } },
-    { name: 'webkit', use: { browserName: 'webkit' } }
-  ]
+  projects: (() => {
+    const base = [
+      { name: 'chromium', use: { browserName: 'chromium', launchOptions: { args: ['--disable-dev-shm-usage'] } } },
+      { name: 'firefox', use: { browserName: 'firefox', launchOptions: { args: ['--disable-dev-shm-usage'] } } }
+    ];
+
+    // WebKit often requires extra host libraries on Windows (libcurl etc.).
+    // Exclude WebKit on Windows to avoid local developer failures while
+    // keeping it in CI (Linux/macOS) where dependencies are installed.
+    const isWindows = process.platform === 'win32';
+    if (!isWindows) {
+      base.push({ name: 'webkit', use: { browserName: 'webkit' } });
+    }
+
+    return base;
+  })()
 }
