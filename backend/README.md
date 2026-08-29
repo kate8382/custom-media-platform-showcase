@@ -44,6 +44,13 @@ EMAIL_FROM_PASSWORD=
 
 # Email service name to use
 EMAIL_SERVICE_NAME=
+
+# Optional: allow selecting recipients from the frontend contact form
+# Provide a semicolon-separated list of allowed recipient email addresses.
+# If omitted and EMAIL_TO_USER is not set, the server will accept any recipient
+# provided by the frontend (useful for local development). Recommended to set
+# this in production to avoid forwarding to arbitrary addresses.
+EMAIL_RECIPIENTS=e.sevciuc82@gmail.com;hiranwatson@gmail.com
 ```
 
 ### Fail-safe Setup
