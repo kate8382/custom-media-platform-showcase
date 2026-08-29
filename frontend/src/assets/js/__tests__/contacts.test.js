@@ -7,8 +7,8 @@ function makeFormHtml() {
       <label for="recipient">Send to:</label>
       <select name="recipient">
         <option value="" disabled>Select recipient</option>
-        <option value="hiranwatson@gmail.com">David</option>
-        <option value="e.sevciuc82@gmail.com" selected>Kate</option>
+        <option value="recipient@example.com">David</option>
+        <option value="dev@example.com" selected>Kate</option>
       </select>
       <input name="name" value="Test User" />
       <input name="email" value="test@example.com" />
@@ -70,7 +70,7 @@ describe('ContactsForm', () => {
     expect(calledWith).toBe('/api/contacts');
     const options = global.fetch.mock.calls[0][1];
     const body = JSON.parse(options.body);
-    expect(body.recipient).toBe('e.sevciuc82@gmail.com');
+    expect(body.recipient).toBe('dev@example.com');
   });
 
   it('shows error when backend responds with error payload', async () => {

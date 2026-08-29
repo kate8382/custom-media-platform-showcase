@@ -50,7 +50,7 @@ EMAIL_SERVICE_NAME=
 # If omitted and EMAIL_TO_USER is not set, the server will accept any recipient
 # provided by the frontend (useful for local development). Recommended to set
 # this in production to avoid forwarding to arbitrary addresses.
-EMAIL_RECIPIENTS=e.sevciuc82@gmail.com;hiranwatson@gmail.com
+EMAIL_RECIPIENTS=your+recipient@example.com;other@example.com
 ```
 
 ### Fail-safe Setup

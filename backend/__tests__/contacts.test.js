@@ -35,7 +35,7 @@ describe('Contacts POST /api/contacts', () => {
 
   it('accepts valid payload and email (with explicit recipient)', async () => {
     const app = await getAppWithMockedMailer();
-    const recipient = 'hiranwatson@gmail.com';
+    const recipient = 'recipient@example.com';
     const res = await request(app)
       .post('/api/contacts')
       .send({ name: 'A', email: 'test@example.com', message: 'x'.repeat(30), recipient });
@@ -47,7 +47,7 @@ describe('Contacts POST /api/contacts', () => {
     expect(mailArg).toBeDefined();
     expect(mailArg.to).toBeDefined();
     // recipient may be used as-is (if allowed) or fallback — ensure to includes local recipient when provided
-    expect(mailArg.to).toEqual(expect.stringContaining('hiranwatson'));
+    expect(mailArg.to).toEqual(expect.stringContaining('recipient'));
   });
 
   it('rejects invalid email', async () => {
