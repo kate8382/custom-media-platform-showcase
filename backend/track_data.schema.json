@@ -1,0 +1,176 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Bandcamp track embed data",
+    "description": "Schema for Bandcamp embed configuration used by the project's backend",
+    "type": "object",
+    "properties": {
+        "ArtistName": {
+            "type": "string"
+        },
+        "BandcampURL": {
+            "type": "string"
+        },
+        "TotalPublishedTracks": {
+            "type": "integer"
+        },
+        "Tracks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "TrackNumber": {
+                        "type": "integer"
+                    },
+                    "TrackName": {
+                        "type": "string"
+                    },
+                    "BandcampEmbedInfo": {
+                        "type": "object",
+                        "properties": {
+                            "TrackId": {
+                                "type": "integer"
+                            },
+                            "AnchorTrackName": {
+                                "type": "string"
+                            },
+                            "AnchorText": {
+                                "type": "string"
+                            },
+                            "EmbedStyle": {
+                                "type": "object",
+                                "properties": {
+                                    "IFrameSize": {
+                                        "type": "string",
+                                        "enum": [
+                                            "large",
+                                            "small"
+                                        ]
+                                    },
+                                    "IFrameWidth": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Amount": {
+                                                "type": "integer"
+                                            },
+                                            "Units": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "px",
+                                                    "%"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "Amount",
+                                            "Units"
+                                        ]
+                                    },
+                                    "IFrameHeight": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Amount": {
+                                                "type": "integer"
+                                            },
+                                            "Units": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "px",
+                                                    "%"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "Amount",
+                                            "Units"
+                                        ]
+                                    },
+                                    "BackgroundColor": {
+                                        "type": "string",
+                                        "minLength": 6,
+                                        "maxLength": 6,
+                                        "pattern": "^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+                                    },
+                                    "LinkColor": {
+                                        "type": "string",
+                                        "minLength": 6,
+                                        "maxLength": 6,
+                                        "pattern": "^([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+                                    },
+                                    "TrackListShow": {
+                                        "type": "boolean"
+                                    },
+                                    "TransparentShow": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": [
+                                    "IFrameSize",
+                                    "IFrameWidth",
+                                    "IFrameHeight",
+                                    "BackgroundColor",
+                                    "LinkColor",
+                                    "TrackListShow",
+                                    "TransparentShow"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "required": [
+                            "TrackId",
+                            "AnchorText",
+                            "AnchorTrackName",
+                            "EmbedStyle"
+                        ],
+                        "additionalProperties": false
+                    }
+                },
+                "required": [
+                    "TrackName",
+                    "BandcampEmbedInfo"
+                ],
+                "additionalProperties": false
+            },
+            "uniqueItems": true
+        }
+    },
+    "required": [
+        "ArtistName",
+        "BandcampURL",
+        "TotalPublishedTracks",
+        "Tracks"
+    ],
+    "additionalProperties": false,
+    "examples": [
+        {
+            "ArtistName": "Example Artist",
+            "BandcampURL": "https://example.bandcamp.com",
+            "TotalPublishedTracks": 1,
+            "Tracks": [
+                {
+                    "TrackNumber": 1,
+                    "TrackName": "Example Track",
+                    "BandcampEmbedInfo": {
+                        "TrackId": 1811357426,
+                        "AnchorTrackName": "example-track",
+                        "AnchorText": "Example Track by Example Artist",
+                        "EmbedStyle": {
+                            "IFrameSize": "large",
+                            "IFrameWidth": {
+                                "Amount": 280,
+                                "Units": "px"
+                            },
+                            "IFrameHeight": {
+                                "Amount": 394,
+                                "Units": "px"
+                            },
+                            "BackgroundColor": "ffffff",
+                            "LinkColor": "0687f5",
+                            "TrackListShow": false,
+                            "TransparentShow": true
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

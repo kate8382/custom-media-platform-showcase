@@ -1,0 +1,247 @@
+{
+    "ArtistName": "Njoy music",
+    "BandcampURL": "https://njoy-music.bandcamp.com/",
+    "TotalPublishedTracks": 10,
+    "Tracks": [
+        {
+            "TrackNumber": 1,
+            "TrackName": "END",
+            "BandcampEmbedInfo": {
+                "TrackId": 3672841910,
+                "AnchorTrackName": "end",
+                "AnchorText": "END by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 2,
+            "TrackName": "CIA",
+            "BandcampEmbedInfo": {
+                "TrackId": 626346897,
+                "AnchorTrackName": "cia",
+                "AnchorText": "CIA by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 3,
+            "TrackName": "COL",
+            "BandcampEmbedInfo": {
+                "TrackId": 929914536,
+                "AnchorTrackName": "col",
+                "AnchorText": "COL by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 4,
+            "TrackName": "FTS",
+            "BandcampEmbedInfo": {
+                "TrackId": 4139437776,
+                "AnchorTrackName": "fts",
+                "AnchorText": "FTS by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 5,
+            "TrackName": "INA",
+            "BandcampEmbedInfo": {
+                "TrackId": 2065781303,
+                "AnchorTrackName": "ina",
+                "AnchorText": "INA by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 6,
+            "TrackName": "OUW",
+            "BandcampEmbedInfo": {
+                "TrackId": 49581169,
+                "AnchorTrackName": "ouw",
+                "AnchorText": "OUW by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 7,
+            "TrackName": "ORD",
+            "BandcampEmbedInfo": {
+                "TrackId": 264332660,
+                "AnchorTrackName": "ord",
+                "AnchorText": "ORD by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 8,
+            "TrackName": "TOW",
+            "BandcampEmbedInfo": {
+                "TrackId": 1458026833,
+                "AnchorTrackName": "tow",
+                "AnchorText": "TOW by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 9,
+            "TrackName": "SPE",
+            "BandcampEmbedInfo": {
+                "TrackId": 2608350280,
+                "AnchorTrackName": "spe",
+                "AnchorText": "SPE by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        },
+        {
+            "TrackNumber": 10,
+            "TrackName": "ATE",
+            "BandcampEmbedInfo": {
+                "TrackId": 227286145,
+                "AnchorTrackName": "ate",
+                "AnchorText": "ATE by Njoy music",
+                "EmbedStyle": {
+                    "IFrameSize": "large",
+                    "IFrameWidth": {
+                        "Amount": 260,
+                        "Units": "px"
+                    },
+                    "IFrameHeight": {
+                        "Amount": 402,
+                        "Units": "px"
+                    },
+                    "BackgroundColor": "333333",
+                    "LinkColor": "e99708",
+                    "TrackListShow": false,
+                    "TransparentShow": true
+                }
+            }
+        }
+    ]
+}
