@@ -4,6 +4,12 @@ import ContactsForm from '../contacts.js';
 function makeFormHtml() {
   return `
     <form id="contactsForm" data-contact-endpoint="/api/contacts">
+      <label for="recipient">Send to:</label>
+      <select name="recipient">
+        <option value="" disabled>Select recipient</option>
+        <option value="hiranwatson@gmail.com">David</option>
+        <option value="e.sevciuc82@gmail.com" selected>Kate</option>
+      </select>
       <input name="name" value="Test User" />
       <input name="email" value="test@example.com" />
       <textarea name="message">This is a valid message with enough length.</textarea>
@@ -62,6 +68,9 @@ describe('ContactsForm', () => {
     expect(global.fetch).toHaveBeenCalled();
     const calledWith = global.fetch.mock.calls[0][0];
     expect(calledWith).toBe('/api/contacts');
+    const options = global.fetch.mock.calls[0][1];
+    const body = JSON.parse(options.body);
+    expect(body.recipient).toBe('e.sevciuc82@gmail.com');
   });
 
   it('shows error when backend responds with error payload', async () => {
