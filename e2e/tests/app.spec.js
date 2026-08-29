@@ -170,7 +170,8 @@ test('hero bandcamp button opens Bandcamp link', async ({ page }) => {
 test('playlist page loads and has server-inserted items', async ({ page }) => {
   await page.goto('/#playlist', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('section#playlist')).toBeVisible();
-  await expect(page.locator('.playlist__title')).toHaveText('My music');
+  // Accept either the legacy title or the updated showcase title
+  await expect(page.locator('.playlist__title')).toHaveText(/Audio Showcase/);
 
   const items = page.locator('#playList .playlist__item');
   // wait longer for items to be injected
