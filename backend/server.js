@@ -79,6 +79,9 @@ const allowedURLs = process.env.FRONTEND_URL || "";
 const allowedOrigins = allowedURLs ? allowedURLs.split(";").map(url => url.replace(/\/$/, "")) : [];
 if (!isProduction) {
     allowedOrigins.push(`http://localhost:${PORT}`);
+    // Vite dev server commonly runs on 5173 — allow it for local development
+    allowedOrigins.push('http://localhost:5173');
+    allowedOrigins.push('http://127.0.0.1:5173');
 }
 const corsOptions = {
     origin: (incomingDomain, callback) => {
