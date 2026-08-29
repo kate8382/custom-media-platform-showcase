@@ -100,10 +100,17 @@ let mailerUserTo = process.env.EMAIL_TO_USER || "";
 let mailerPasswordFrom = process.env.EMAIL_FROM_PASSWORD || "";
 let mailerServiceName = process.env.EMAIL_SERVICE_NAME || "";
 let mailerConnectAuth;
+// Allowed recipients may be provided as a semicolon-separated list in env
+const allowedRecipientsEnv = process.env.EMAIL_RECIPIENTS || '';
+const ALLOWED_RECIPIENTS = allowedRecipientsEnv
+    .split(';')
+    .map(s => s.trim())
+    .filter(Boolean);
+if (mailerUserTo && !ALLOWED_RECIPIENTS.includes(mailerUserTo)) ALLOWED_RECIPIENTS.push(mailerUserTo);
 
 
-/** Module specific global variables: 
- * - Create the Express app 
+/** Module specific global variables:
+ * - Create the Express app
  * - Create an Ajv object to use for the JSON schema validation
  * - Create a transporter instance for nodemailer  */
 const app = express();
@@ -159,12 +166,12 @@ if (isProduction) {
 
 /**
  * This function sets up the mailer service for the nodemailer module. The mail transporter from the module is initialized using the following:
- * 
+ *
  * If SMTP credentials have been provided, the mail transporter uses them.
  * If there are no credentials and the server is not in production mode, an Ethereal account is created for testing purposes. This allows for verification that emails are being sent.
- * 
+ *
  * Finally, the module verify function is called on the mail transporter to determine whether a connection to the email server is possible. The results are stored in the global variable mailerConnectAuth.
- * 
+ *
  */
 async function setupMailer() {
     try {
@@ -212,7 +219,7 @@ async function setupMailer() {
 }
 
 
-/** Middleware setup: 
+/** Middleware setup:
  * - Set up CORS using the corsOptions constant to determine which IPs/URLs to whitelist
  * - Add the ability to handle complex form data through POST
  * - Add the ability to handle JSON data through POST
@@ -245,17 +252,17 @@ if (!isTestRunner) {
 
 /**
  * This function checks to see if the rate limit has been reached for a specific ip. The rate limit pertains to how many messages from the contact form that ip can send in a given time frame. The rate for now is set to 10 times per hour.
- * 
+ *
  * Each ip is added to a Map variable (rateLimitMap). The ip becomes the key, and the value is an object containing a count and a date stamp using Date.now(). The count specifies how many times the ip has sent a message. The date stamp is populated the first time an ip is added to the Map.
- * 
+ *
  * The current date stamp is gotten and the ip is retrieved from the Map. If it doesn't exist, then it's added with a count of 1 and the date stamp. If it exists, then two checks are performed:
- * 
+ *
  * The first is to see if the difference between the current date stamp and the first one recorded in the Map is over an hour. If so, then the value object for that ip is reset - the count goes back to 1, and the recorded first date stamp becomes the current one.
- * 
+ *
  * The second is to see if the count for the ip is over 10. Since the first check has already processed, this second check means the ip is over the rate limit.
- * 
+ *
  * Finally, the count is increased by one.
- * 
+ *
  * @param {string} ip The ip address of the incoming request (see the Contact form endpoint route)
  * @returns Boolean value representing if the rate limit has been reached. True means it has; false means it hasn't.
  */
@@ -282,13 +289,13 @@ function isRateLimited(ip) {
 
 /**
  * This function will create the fully formed HTML code to return to the GET /api/bandcamp call.
- * 
+ *
  * It does this by parsing the JSON data object passed in and using the data to create the embed iframe and anchor code that Bandcamp uses. The specific code needed for each track listed in the JSON data is generated and added together.
- * 
+ *
  * Each track code is wrapped in list elements for easier inclusion client-side. This means, for each track, the HTML code consists of: <li><iframe><a></a></iframe></li>
- * 
+ *
  * The generated HTML code is stored as a string and returned.
- * 
+ *
  * @param {object} jsonData An object representing the JSON data found in the file track_data.json
  * @returns string A string representing the fully formed HTML code to return to the API
  */
@@ -389,7 +396,7 @@ app.post('/api/contacts', async (req, res) => {
             });
         }
 
-        const { name, email, message } = req.body || {};
+        const { name, email, message, recipient } = req.body || {};
         if (!name || !email || !message) {
             return res.status(400).json({
                 ok: false,
@@ -423,9 +430,24 @@ app.post('/api/contacts', async (req, res) => {
             });
         }
 
+        // Determine recipient address: prefer explicit recipient from form if it's allowed
+        let toAddress = mailerUserTo || mailerUserFrom || email;
+        try {
+            if (recipient && typeof recipient === 'string' && validator.isEmail(recipient)) {
+                const rcpt = recipient.trim();
+                if (ALLOWED_RECIPIENTS.length === 0 || ALLOWED_RECIPIENTS.includes(rcpt)) {
+                    toAddress = rcpt;
+                } else {
+                    console.warn(`Contact attempt to unknown recipient: ${rcpt}. Falling back to default recipient.`);
+                }
+            }
+        } catch (e) {
+            console.warn('Recipient validation failed, using default recipient.', e);
+        }
+
         const mailOptions = {
             from: mailerUserFrom || email,
-            to: mailerUserTo || mailerUserFrom || email,
+            to: toAddress,
             replyTo: email || "",
             subject: `New contact message received`,
             text: `New contact message received on ${websiteDomain}:\n\nContact Name: ${name}\nContact Email: ${email}\nContact Message: ${message}\n\nReply to the sender to respond.`
