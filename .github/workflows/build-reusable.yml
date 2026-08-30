@@ -166,7 +166,23 @@ jobs:
       # images/videos generation and caching handled earlier before build
 
       - name: Vite build (frontend)
-        run: npm run build:frontend
+        run: |
+          # Produce a repo-aware base for GitHub Pages when running in Actions
+          if [ -n "$GITHUB_REPOSITORY" ]; then
+            REPO_NAME=$(echo "$GITHUB_REPOSITORY" | cut -d'/' -f2)
+            export VITE_BASE="/$REPO_NAME/"
+          fi
+          npm run build:frontend
+
+      - name: Ensure .nojekyll in dist
+        if: ${{ inputs.do_deploy }}
+        run: |
+          # peaceiris/actions-gh-pages pushes the folder contents; adding .nojekyll
+          # prevents GitHub Pages from running Jekyll on the published branch.
+          if [ -d dist/frontend ]; then
+            touch dist/frontend/.nojekyll
+            echo ".nojekyll added to dist/frontend"
+          fi
 
       - name: Build backend
         shell: bash

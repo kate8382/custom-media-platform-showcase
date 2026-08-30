@@ -15,7 +15,12 @@ import path from 'path';
 export default defineConfig({
   // Serve files from frontend/src where index.html currently lives
   root: 'frontend/src',
-  base: '/',
+  // For CI/GitHub Pages builds set a repo-aware base path so built assets
+  // reference the correct subpath (e.g. `/owner/repo/`). Locally we keep
+  // `/` for dev server HMR.
+  base: process.env.VITE_BASE || (process.env.CI && process.env.GITHUB_REPOSITORY
+    ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
+    : '/'),
   // ensure Vite/Vitest cache is stored in the repository-level node_modules
   // (prevents creating a separate `frontend/src/node_modules` when tests run with
   // the project root set to `frontend/src`). This path is relative to the
