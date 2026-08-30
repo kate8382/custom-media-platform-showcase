@@ -189,6 +189,13 @@ npm run prepare
 - Adjusted `build-tools/gen-videos.cjs` to be more tolerant of small duration differences when generating WebM output.
 - Redacted other sensitive notes into `documentation/legacy-client-notes.md` with guidance to keep original archives offline.
 
+## License
+
+- **Codebase:** Distributed under the [MIT License](LICENSE).
+- **Media & Assets:** All visual assets, video demos (`presentation.mp4` / `.webm`), audio samples, and screenshots are copyright © 2026 David H. Watson & Ecaterina Sevciuc. All rights reserved. Not licensed for reuse or redistribution without explicit permission.
+
+For performer/licensing information related to embedded tracks (Bandcamp releases), see the Bandcamp metadata in `backend/bandcamp_embeds.txt` or the official release pages.
+
 ---
 
 Last Updated: August 2026
