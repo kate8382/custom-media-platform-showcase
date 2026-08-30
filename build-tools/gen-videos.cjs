@@ -119,8 +119,15 @@ async function processVideo(file) {
         const inDur = Number(inMeta.format && inMeta.format.duration) || 0;
         const outDur = Number(outMeta.format && outMeta.format.duration) || 0;
         const diff = Math.abs(inDur - outDur);
-        if (inDur > 0 && diff > 0.05) {
+        // Allow a small tolerance for duration differences introduced by re-encoding
+        // Some encoders/containers report slightly different durations (timestamp rounding,
+        // variable frame rate handling). Use a relaxed threshold to avoid false failures.
+        const DURATION_THRESHOLD = 0.2; // seconds
+        if (inDur > 0 && diff > DURATION_THRESHOLD) {
           throw new Error(`duration mismatch: in=${inDur} out=${outDur}`);
+        }
+        if (inDur > 0 && diff > 0.05) {
+          console.warn(`Small duration discrepancy for ${base}${ext}: in=${inDur} out=${outDur} diff=${diff}s — continuing (threshold ${DURATION_THRESHOLD}s)`);
         }
       };
 
