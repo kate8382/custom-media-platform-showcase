@@ -459,11 +459,10 @@ app.post('/api/contacts', async (req, res) => {
         const info = await mailTransporter.sendMail(mailOptions);
 
         // If using a test account (Ethereal), log the preview URL so developer can inspect the message
-        let previewUrl = null;
         try {
-            previewUrl = mailer.getTestMessageUrl ? mailer.getTestMessageUrl(info) : null;
+            const preview = mailer.getTestMessageUrl ? mailer.getTestMessageUrl(info) : null;
 
-            if (previewUrl) console.log(msgObjConsole.PREVIEWMSG + previewUrl);
+            if (preview) console.log(msgObjConsole.PREVIEWMSG + preview);
         }
         catch (e) {
             console.log(`There was an error logging the Ethereal preview URL: ${e}`);
@@ -471,15 +470,10 @@ app.post('/api/contacts', async (req, res) => {
 
         console.log(`The email was successfully sent by nodemailer! This was the SMTP server response: ${info.response}`);
 
-        const responsePayload = {
+        return res.status(200).json({
             ok: true,
             message: msgObjStatusReturn.MSG_SUCCESS
-        };
-
-        // In non-production (dev) include Ethereal preview URL to help developers
-        if (!isProduction && previewUrl) responsePayload.preview = previewUrl;
-
-        return res.status(200).json(responsePayload);
+        });
     }
     catch (err) {
         console.error(msgObjConsole.POSTERR, err);
