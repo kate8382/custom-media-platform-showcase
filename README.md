@@ -157,6 +157,38 @@ npm run prepare
 - Built a zero-dependency Vanilla JS SPA router with lifecycle hooks and a11y focus management.
 - Integrated a testing setup (Vitest) with isolation for I/O and reduced flakiness in CI runs.
 
+## Additional developer notes (configuration, gotchas, and recommendations)
+
+### Ports & dev servers
+
+- Frontend (Vite) default dev server: `http://localhost:5173` (HMR enabled).
+- Backend (Express) default dev port: `3000` (can be overridden with `PORT` in `.env`).
+- When running locally with `npm run dev:all` the frontend and backend run concurrently; ensure `FRONTEND_URL` is set in backend `.env` or the server allows `http://localhost:5173` in CORS during development.
+
+### Environment and SMTP behaviour
+
+- The backend reads runtime configuration from `backend/.env` (copy from `backend/.env.example`).
+- In development, if no SMTP credentials are provided the server creates an Ethereal test account and does NOT forward emails to real inboxes — Ethereal provides a preview URL where the message can be inspected. To send real email, populate `EMAIL_FROM_USER`, `EMAIL_FROM_PASSWORD`, and `EMAIL_SERVICE_NAME` in `.env`, and set `SERVER_LIVE=true` for production behaviour.
+- Allowed recipients are controlled by `EMAIL_RECIPIENTS` (semicolon-separated). If set, the backend will only forward to addresses listed there for safety.
+
+### Contact form behaviour & debugging
+
+- The frontend contact form sends JSON to `POST /api/contacts` with `{ name, email, message, recipient }` when a recipient is selected. When no backend is configured the frontend falls back to `mailto:` as a client-side fallback.
+- Common local CORS issue: if the backend's CORS whitelist doesn't include `http://localhost:5173` (or `FRONTEND_URL`), the browser will block the POST. Set `FRONTEND_URL=http://localhost:5173` in `backend/.env` or run the backend in dev mode where localhost:5173 is allowed by default.
+
+### Tests & CI notes
+
+- Unit tests (frontend) — run `npm test` (Vitest, jsdom). Backend-specific tests: `npm run test:backend`.
+- E2E tests — `npm run test:e2e` uses Playwright. On Windows, WebKit may fail due to host library issues (libcurl); CI workflows skip or run selective browsers. See `e2e/playwright.config.cjs` for details.
+- When adjusting tests that depend on environment variables, set them before running (examples in vitest backend config files).
+
+### What we changed to prepare for public release
+
+- Replaced personal developer emails in contact tests and backend README with placeholders.
+- Added `backend/.env.example` and documented publishing checklist to avoid committing secrets.
+- Adjusted `build-tools/gen-videos.cjs` to be more tolerant of small duration differences when generating WebM output.
+- Redacted other sensitive notes into `documentation/legacy-client-notes.md` with guidance to keep original archives offline.
+
 ---
 
 Last Updated: August 2026
