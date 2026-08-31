@@ -6,7 +6,11 @@
 A high-performance, responsive single-page web architecture designed for audio streaming, dynamic Bandcamp integration, and custom media showcases.
 
 <p align="center">
-  <img src="frontend/src/assets/img/banner.png" alt="Banner" />
+  <video controls preload="none" poster="frontend/src/assets/img/banner.png" style="max-width:100%;height:auto;">
+    <source src="dist/frontend/presentation-Ct3drjjF.mp4" type="video/mp4">
+    <source src="dist/frontend/presentation-aXUV_3QB.webm" type="video/webm">
+    Your browser does not support HTML5 video playback. Watch on <a href="https://youtu.be/R8rgODfEkXc">YouTube</a>.
+  </video>
 </p>
 
 > Legacy client notes (redacted): [documentation/legacy-client-notes.md](documentation/legacy-client-notes.md)
@@ -21,10 +25,6 @@ This repository is an engineering showcase and portfolio piece demonstrating mod
 - Redesigned and refactored into a full open-source architecture showcase by **David H. Watson** ([@dEhiN](https://github.com/dEhiN)) and **Ecaterina Sevciuc** ([@kate8382](https://github.com/kate8382)).
 - **David** served as the Project Lead, Systems Architect, and Backend Developer.
 - **Ecaterina** served as the Lead Frontend Architect, UI/UX Developer, and Test Integration Lead.
-
-### Presentation Video
-
-[Watch the project presentation and demo on YouTube](https://youtu.be/R8rgODfEkXc)
 
 ### Project Resources
 
