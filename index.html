@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/custom-media-platform-showcase/assets/favicon-BviMQNvy.ico" rel="shortcut icon" type="image/x-icon">
+  <!-- Provide explicit sizes so browsers can pick the best icon. Using the existing PNG for multiple sizes
+      until properly generated icons are added. Replace these with real 16/32/64 PNGs in production. -->
+  <link href="/custom-media-platform-showcase/assets/favicon-BviMQNvy.ico" rel="icon" type="image/png" sizes="16x16 32x32 64x64">
+  <link href="/custom-media-platform-showcase/assets/favicon-BviMQNvy.ico" rel="icon" type="image/png" sizes="32x32">
+  <link href="/custom-media-platform-showcase/assets/favicon-BviMQNvy.ico" rel="icon" type="image/png" sizes="16x16">
+  <!-- Apple touch icon for iOS home screen bookmarks. Use same source as a fallback. -->
+  <link href="/custom-media-platform-showcase/assets/favicon-BviMQNvy.ico" rel="apple-touch-icon" sizes="180x180">
+  <!-- Theme color for mobile UI. Adjust to match site palette if desired. -->
+  <meta name="theme-color" content="#000000">
+  <title>Custom Media Platform Showcase</title>
+  <script type="module" crossorigin src="/custom-media-platform-showcase/assets/index-Brzfx7Hy.js"></script>
+  <link rel="stylesheet" crossorigin href="/custom-media-platform-showcase/assets/index-Cte_BMU2.css">
+</head>
+
+<body>
+  <div class="container flex" id="home">
+    <header class="header flex" id="header">
+      <div class="header__logo">
+        <picture>
+          <source type="image/webp" srcset="/custom-media-platform-showcase/assets/full-logo-200-CQchbwUL.webp 200w, /custom-media-platform-showcase/assets/full-logo-400-CkfY79TG.webp 400w, /custom-media-platform-showcase/assets/full-logo-800-x5KHDcyJ.webp 800w" sizes="(max-width: 400px) 180px, (max-width: 1024px) 240px, 280px">
+          <img class="header__logo-img" src="/custom-media-platform-showcase/assets/full-logo-BgMLq3gI.png" srcset="/custom-media-platform-showcase/assets/full-logo-200-CAKpvmG2.png 200w, /custom-media-platform-showcase/assets/full-logo-400-DRREF1WW.png 400w, /custom-media-platform-showcase/assets/full-logo-800-B-WV45as.png 800w" sizes="(max-width: 400px) 180px, (max-width: 1024px) 240px, 280px" alt="Logo" loading="lazy">
+        </picture>
+      </div>
+      <nav class="header__nav" id="mainNav" aria-label="Main navigation">
+        <ul class="header__nav-list flex">
+          <li class="header__nav-item"><a class="header__nav-link" href="#home">Home</a></li>
+          <li class="header__nav-item"><a class="header__nav-link" href="#about">About</a></li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#playlist">Music</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#gallery">Gallery</a>
+          </li>
+          <li class="header__nav-item">
+            <a class="header__nav-link" href="#contacts">Contacts</a>
+          </li>
+        </ul>
+      </nav>
+
+      <button class="header__burger" id="headerBurger" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="header__burger-icon" aria-hidden="true" width="32" height="24" viewBox="0 0 32 24" role="img" focusable="false">
+          <rect x="0" y="1" width="32" height="3" rx="1.5" fill="currentColor"></rect>
+          <rect x="0" y="8" width="32" height="3" rx="1.5" fill="currentColor"></rect>
+          <rect x="0" y="15" width="32" height="3" rx="1.5" fill="currentColor"></rect>
+          <rect x="0" y="22" width="32" height="3" rx="1.5" fill="currentColor"></rect>
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero flex" id="hero">
+        <div class="hero__content flex">
+          <h1 class="hero__title">Modern Media Architecture</h1>
+
+          <p class="hero__subtitle">
+            A&nbsp;lightweight, high-performance web showcase featuring custom audio streaming,
+            modular router architecture, and automated asset pipelines.
+          </p>
+
+          <a class="hero__btn flex" id="githubBtn" href="https://github.com/kate8382/custom-media-platform-showcase.git" aria-label="Open GitHub" target="_blank" rel="noopener noreferrer">
+            <svg class="hero__btn-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 640 640">
+              <path fill="currentColor" d="M319.988 7.973C143.293 7.973 0 151.242 0 327.96c0 141.392 91.678 261.298 218.826 303.63 16.004 2.964 21.886-6.957 21.886-15.414 0-7.63-.319-32.835-.449-59.552-89.032 19.359-107.8-37.772-107.8-37.772-14.552-36.993-35.529-46.831-35.529-46.831-29.032-19.879 2.209-19.442 2.209-19.442 32.126 2.245 49.04 32.954 49.04 32.954 28.56 48.922 74.883 34.76 93.131 26.598 2.882-20.681 11.15-34.807 20.315-42.803-71.08-8.067-145.797-35.516-145.797-158.14 0-34.926 12.52-63.485 32.965-85.88-3.33-8.078-14.291-40.606 3.083-84.674 0 0 26.87-8.61 88.029 32.8 25.512-7.075 52.878-10.642 80.056-10.76 27.2.118 54.614 3.673 80.162 10.76 61.076-41.386 87.922-32.8 87.922-32.8 17.398 44.08 6.485 76.631 3.154 84.675 20.516 22.394 32.93 50.953 32.93 85.879 0 122.907-74.883 149.93-146.117 157.856 11.481 9.921 21.733 29.398 21.733 59.233 0 42.792-.366 77.28-.366 87.804 0 8.516 5.764 18.473 21.992 15.354 127.076-42.354 218.637-162.274 218.637-303.582 0-176.695-143.269-319.988-320-319.988l-.023.107z">
+              </path>
+            </svg>
+            Explore Repository
+          </a>
+        </div>
+        <picture>
+          <source type="image/webp" srcset="/custom-media-platform-showcase/assets/hero-img-1200-CsPUJ4Me.webp">
+          <img class="hero__img" src="/custom-media-platform-showcase/assets/hero-img-1200-BZGdKdfx.png" alt="Hero Art Image" loading="lazy">
+        </picture>
+      </section>
+
+      <section class="about" id="about">
+        <div class="about__container flex">
+          <div class="about__header">
+            <h2 class="about__title">About The Project</h2>
+            <p class="about__intro">
+              Custom Media Platform Showcase is&nbsp;a&nbsp;high-performance, responsive
+              single-page architecture built for dynamic audio streaming, automated asset
+              processing, and modular&nbsp;UI component delivery.
+            </p>
+          </div>
+
+          <div class="about__content flex">
+            <ul class="about__list flex">
+              <li class="about__card">
+                <h3 class="about__card-title">
+                  <span class="about__card-icon">⚡</span> Modular Frontend
+                </h3>
+                <p class="about__card-text">
+                  Built with zero-dependency Vanilla JS&nbsp;SPA router, class-based architecture,
+                  and SCSS fluid typography (<code class="code-tag">clamp()</code>) for smooth
+                  responsive scaling.
+                </p>
+              </li>
+
+              <li class="about__card">
+                <h3 class="about__card-title">
+                  <span class="about__card-icon">🎧</span> Dynamic Audio Pipeline
+                </h3>
+                <p class="about__card-text">
+                  Custom JSON payload parser integration for Bandcamp audio streams, featuring
+                  embedded iframe controls and HTML5 fallback player support.
+                </p>
+              </li>
+
+              <li class="about__card">
+                <h3 class="about__card-title">
+                  <span class="about__card-icon">🛠️</span> Automated Build Tools
+                </h3>
+                <p class="about__card-text">
+                  Node.js CLI automation leveraging Sharp and FFmpeg to&nbsp;transcode WebM/MP4
+                  video variants and build responsive WebP images on&nbsp;the fly.
+                </p>
+              </li>
+
+              <li class="about__card">
+                <h3 class="about__card-title">
+                  <span class="about__card-icon">🧪</span> Production QA&nbsp;&amp;&nbsp;CI
+                </h3>
+                <p class="about__card-text">
+                  Comprehensive testing suite using Vitest and Playwright (E2E), enforced via
+                  ESLint flat configs, Prettier, and Husky pre-commit hooks.
+                </p>
+              </li>
+            </ul>
+
+            <div class="about__media-wrapper">
+              <div class="about__video-container">
+                <!-- Пока видео не записано, сюда можно временно поставить <img> с banner.png -->
+                <video class="about__video-player" aria-label="Platform Architecture Demo" controls playsinline preload="none" poster="/custom-media-platform-showcase/assets/banner-B1UvtMFl.png">
+                  <source src="/custom-media-platform-showcase/assets/presentation-CYnDxdwz.webm" type="video/webm">
+                  <source src="/custom-media-platform-showcase/assets/presentation-6MoQkgTq.mp4" type="video/mp4">
+                  Your browser does not support video streaming.
+                </video>
+              </div>
+
+              <div class="about__media-caption">
+                <span>Architecture Showcase &amp;&nbsp;Media Pipeline Preview</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="playlist" id="playlist">
+        <h2 class="playlist__title">Audio Showcase</h2>
+        <p class="playlist__subtitle">A&nbsp;collection of&nbsp;featured tracks demonstrating dynamic playlist rendering and embedded media streaming across the platform.</p>
+
+        <ul class="playlist__content flex" id="playList"></ul>
+      </section>
+
+      <section class="gallery flex" id="gallery">
+        <h2 class="gallery__title">Gallery</h2>
+        <p class="gallery__intro">
+          A&nbsp;curated visual showcase featuring album cover artwork, dynamic media assets, and
+          thematic photography.
+        </p>
+
+        <div class="gallery__collection">
+          <h3 class="gallery__subtitle">Album Art &amp;&nbsp;Visual Identity</h3>
+
+          <ul class="gallery__list flex">
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="/custom-media-platform-showcase/assets/cover-1-400-DFczerQB.webp 400w, /custom-media-platform-showcase/assets/cover-1-800-COA1cUxe.webp 800w, /custom-media-platform-showcase/assets/cover-1-1200-BM-wHJwx.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px">
+                <img src="./assets/img/generated/cover-1-1200.jpg" aria-label="Album cover featuring a close-up of a wooden acoustic guitar soundhole" srcset="./assets/img/generated/cover-1-400.jpg 400w, ./assets/img/generated/cover-1-800.jpg 800w, ./assets/img/generated/cover-1-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px" loading="lazy" alt="Close-up of a vintage wooden acoustic guitar soundhole and steel strings with a torn paper border style.">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="/custom-media-platform-showcase/assets/cover-2-400-DfABV10_.webp 400w, /custom-media-platform-showcase/assets/cover-2-800-BnJ9fJks.webp 800w, /custom-media-platform-showcase/assets/cover-2-1200-CenlAdjV.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px">
+                <img src="./assets/img/generated/cover-2-1200.jpg" aria-label="Album artwork depicting a musician playing acoustic guitar in a vintage recording studio" srcset="./assets/img/generated/cover-2-400.jpg 400w, ./assets/img/generated/cover-2-800.jpg 800w, ./assets/img/generated/cover-2-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px" loading="lazy" alt="Silhouette of a musician in a hat playing acoustic guitar in a studio with a vintage microphone and reel-to-reel tape recorder.">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="/custom-media-platform-showcase/assets/cover-3-400-Dx6nf29C.webp 400w, /custom-media-platform-showcase/assets/cover-3-800-DmbpVYd6.webp 800w, /custom-media-platform-showcase/assets/cover-3-1200-BgloW-_c.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px">
+                <img src="./assets/img/generated/cover-3-1200.jpg" aria-label="Album artwork showcasing a rustic acoustic guitar body framed by torn paper textures" srcset="./assets/img/generated/cover-3-400.jpg 400w, ./assets/img/generated/cover-3-800.jpg 800w, ./assets/img/generated/cover-3-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px" loading="lazy" alt="Rustic acoustic guitar body artwork framed by torn paper edges with warm blue and gold tones.">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="/custom-media-platform-showcase/assets/cover-4-400-D8SgquVQ.webp 400w, /custom-media-platform-showcase/assets/cover-4-800-BYDTPL7K.webp 800w, /custom-media-platform-showcase/assets/cover-4-1200-CpQvsT1t.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px">
+                <img src="./assets/img/generated/cover-4-1200.jpg" aria-label="Album cover with an acoustic guitar alongside a vintage Sony tape recorder" srcset="./assets/img/generated/cover-4-400.jpg 400w, ./assets/img/generated/cover-4-800.jpg 800w, ./assets/img/generated/cover-4-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px" loading="lazy" alt="Acoustic guitar standing next to a vintage Sony reel-to-reel tape recorder under warm spotlight.">
+              </picture>
+            </li>
+          </ul>
+        </div>
+
+        <div class="gallery__collection">
+          <h3 class="gallery__subtitle">Atmospheric Media &amp;&nbsp;Motion Assets</h3>
+
+          <ul class="gallery__list flex">
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="/custom-media-platform-showcase/assets/gallery-1-400-i848H3TS.webp 400w, /custom-media-platform-showcase/assets/gallery-1-800-aohA3Ndp.webp 800w, /custom-media-platform-showcase/assets/gallery-1-1200-BaN-yG2D.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px">
+                <img src="./assets/img/generated/gallery-1-1200.jpg" aria-label="Atmospheric photo of a railway line extending toward a bright sunset" srcset="./assets/img/generated/gallery-1-400.jpg 400w, ./assets/img/generated/gallery-1-800.jpg 800w, ./assets/img/generated/gallery-1-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px" loading="lazy" alt="Straight railway track stretching toward a bright golden sunset on a flat horizon.">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="/custom-media-platform-showcase/assets/gallery-2-400-BcuiW4AR.webp 400w, /custom-media-platform-showcase/assets/gallery-2-800-Blk9xhbO.webp 800w, /custom-media-platform-showcase/assets/gallery-2-1200-BC9FP05K.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px">
+                <img src="./assets/img/generated/gallery-2-1200.jpg" aria-label="Road trip photography showing a highway winding toward snow-covered mountains" srcset="./assets/img/generated/gallery-2-400.jpg 400w, ./assets/img/generated/gallery-2-800.jpg 800w, ./assets/img/generated/gallery-2-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px" loading="lazy" alt="Scenic view through a vehicle windshield of a winding road leading toward snow-capped mountains.">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="/custom-media-platform-showcase/assets/gallery-3-400-D2veWpBX.webp 400w, /custom-media-platform-showcase/assets/gallery-3-800-Bw9oF3en.webp 800w, /custom-media-platform-showcase/assets/gallery-3-1200-BOTAdPnn.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px">
+                <img src="/custom-media-platform-showcase/assets/gallery-3-1200-DC-GOuza.jpg" aria-label="Travel imagery featuring a canvas backpack sitting by a rural highway" srcset="/custom-media-platform-showcase/assets/gallery-3-400-BL4e6BiL.jpg 400w, /custom-media-platform-showcase/assets/gallery-3-800-B_umiILp.jpg 800w, /custom-media-platform-showcase/assets/gallery-3-1200-DC-GOuza.jpg 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px" loading="lazy" alt="Canvas travel backpack resting on the gravel edge of an empty asphalt road next to a forest.">
+              </picture>
+            </li>
+
+            <li class="gallery__item">
+              <picture class="gallery__item-content">
+                <source type="image/webp" srcset="/custom-media-platform-showcase/assets/gallery-4-400-DyMpIHR7.webp 400w, /custom-media-platform-showcase/assets/gallery-4-800-DvQ3WFJk.webp 800w, /custom-media-platform-showcase/assets/gallery-4-1200-MLUQR8My.webp 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px">
+                <img src="/custom-media-platform-showcase/assets/gallery-4-1200-Dx23Jfb6.jpg" aria-label="Atmospheric water wake photo surrounded by foggy forested islands" srcset="/custom-media-platform-showcase/assets/gallery-4-400-CIRIX2MB.jpg 400w, /custom-media-platform-showcase/assets/gallery-4-800-BlpJpyU6.jpg 800w, /custom-media-platform-showcase/assets/gallery-4-1200-Dx23Jfb6.jpg 1200w" sizes="(max-width: 768px) 100vw, (max-width: 1024px) 45vw, 220px" loading="lazy" alt="Foamy water wake behind a boat navigating through misty pine-covered islands under a cloudy sky.">
+              </picture>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="contacts flex" id="contacts">
+        <h3 class="contacts__title">Get in touch</h3>
+        <p class="contacts__subtitle">This project was built and maintained by&nbsp;David and Kate. Feel free
+          to&nbsp;reach out to&nbsp;either of&nbsp;us for collaboration, questions, or&nbsp;software feedback!</p>
+
+        <form class="contacts__form flex" id="contactsForm" data-email-service data-email-template data-email-user novalidate>
+          <label for="recipient">Send to:</label>
+          <select class="contacts__form-input" id="recipient" name="recipient" required>
+            <option value="" disabled selected>Select recipient</option>
+            <option value="recipient@example.com">David</option>
+            <option value="dev@example.com">Kate</option>
+          </select>
+
+          <label for="name">Name</label>
+          <input class="contacts__form-input" id="name" name="name" placeholder="Your Name" type="text" required>
+
+          <label for="email">Email</label>
+          <input class="contacts__form-input" id="email" name="email" placeholder="Your Email" type="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+
+          <label for="message">Message</label>
+          <textarea class="contacts__form-input" id="message" name="message" required minlength="20" placeholder="Please enter your message"></textarea>
+
+          <div class="contacts__form-row flex">
+            <div class="contacts__form-status" id="contactsFormStatus" aria-live="polite"></div>
+            <button class="contacts__form-btn" id="contactsFormSend" type="submit">Send</button>
+          </div>
+        </form>
+
+        <div class="contacts__profiles flex" aria-label="Author profiles" role="group">
+          <p class="contacts__profiles-text">Connect with us:</p>
+
+          <ul class="contacts__profiles-list flex">
+            <li class="contacts__profile flex">
+              <strong>David:</strong>
+              <div class="contacts__profile-links flex">
+              <a class="link-gh" href="https://github.com/dEhiN" aria-label="David GitHub" target="_blank" rel="noopener noreferrer">
+                <svg class="gh-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 640 640">
+                  <path fill="currentColor" d="M319.988 7.973C143.293 7.973 0 151.242 0 327.96c0 141.392 91.678 261.298 218.826 303.63 16.004 2.964 21.886-6.957 21.886-15.414 0-7.63-.319-32.835-.449-59.552-89.032 19.359-107.8-37.772-107.8-37.772-14.552-36.993-35.529-46.831-35.529-46.831-29.032-19.879 2.209-19.442 2.209-19.442 32.126 2.245 49.04 32.954 49.04 32.954 28.56 48.922 74.883 34.76 93.131 26.598 2.882-20.681 11.15-34.807 20.315-42.803-71.08-8.067-145.797-35.516-145.797-158.14 0-34.926 12.52-63.485 32.965-85.88-3.33-8.078-14.291-40.606 3.083-84.674 0 0 26.87-8.61 88.029 32.8 25.512-7.075 52.878-10.642 80.056-10.76 27.2.118 54.614 3.673 80.162 10.76 61.076-41.386 87.922-32.8 87.922-32.8 17.398 44.08 6.485 76.631 3.154 84.675 20.516 22.394 32.93 50.953 32.93 85.879 0 122.907-74.883 149.93-146.117 157.856 11.481 9.921 21.733 29.398 21.733 59.233 0 42.792-.366 77.28-.366 87.804 0 8.516 5.764 18.473 21.992 15.354 127.076-42.354 218.637-162.274 218.637-303.582 0-176.695-143.269-319.988-320-319.988l-.023.107z">
+                  </path>
+                </svg>
+              </a>
+              <a class="link-in" href="https://www.linkedin.com/in/david-h-watson/" aria-label="David LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg class="in-icon" aria-hidden="true" height="28px" width="28px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 382 382" xml:space="preserve">
+                  <path style="fill:currentColor;" d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+	C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
+	H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+	c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1
+	s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+	c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079
+	c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
+	c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
+	L341.91,330.654L341.91,330.654z"></path>
+                </svg>
+              </a>
+              </div>
+            </li>
+
+            <li class="contacts__profile-separator" aria-hidden="true">&amp;&nbsp;</li>
+
+            <li class="contacts__profile flex">
+              <strong>Kate:</strong>
+              <div class="contacts__profile-links flex">
+              <a class="link-gh" href="https://github.com/kate8382" aria-label="Kate GitHub" target="_blank" rel="noopener noreferrer">
+                <svg class="gh-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 640 640">
+                  <path fill="currentColor" d="M319.988 7.973C143.293 7.973 0 151.242 0 327.96c0 141.392 91.678 261.298 218.826 303.63 16.004 2.964 21.886-6.957 21.886-15.414 0-7.63-.319-32.835-.449-59.552-89.032 19.359-107.8-37.772-107.8-37.772-14.552-36.993-35.529-46.831-35.529-46.831-29.032-19.879 2.209-19.442 2.209-19.442 32.126 2.245 49.04 32.954 49.04 32.954 28.56 48.922 74.883 34.76 93.131 26.598 2.882-20.681 11.15-34.807 20.315-42.803-71.08-8.067-145.797-35.516-145.797-158.14 0-34.926 12.52-63.485 32.965-85.88-3.33-8.078-14.291-40.606 3.083-84.674 0 0 26.87-8.61 88.029 32.8 25.512-7.075 52.878-10.642 80.056-10.76 27.2.118 54.614 3.673 80.162 10.76 61.076-41.386 87.922-32.8 87.922-32.8 17.398 44.08 6.485 76.631 3.154 84.675 20.516 22.394 32.93 50.953 32.93 85.879 0 122.907-74.883 149.93-146.117 157.856 11.481 9.921 21.733 29.398 21.733 59.233 0 42.792-.366 77.28-.366 87.804 0 8.516 5.764 18.473 21.992 15.354 127.076-42.354 218.637-162.274 218.637-303.582 0-176.695-143.269-319.988-320-319.988l-.023.107z">
+                  </path>
+                </svg>
+              </a>
+              <a class="link-in" href="https://www.linkedin.com/in/ecaterina-sevciuc-497017364" aria-label="Kate LinkedIn" target="_blank" rel="noopener noreferrer">
+                <svg class="in-icon" aria-hidden="true" height="28px" width="28px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 382 382" xml:space="preserve">
+                  <path style="fill:currentColor;" d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889
+	C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056
+	H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806
+	c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1
+	s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73
+	c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079
+	c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426
+	c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472
+	L341.91,330.654L341.91,330.654z"></path>
+                </svg>
+              </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="footer__copyright">
+        &copy;&nbsp;2026 Custom Media Platform Showcase. All rights reserved.
+      </p>
+    </footer>
+  </div>
+</body>
+
+</html>
