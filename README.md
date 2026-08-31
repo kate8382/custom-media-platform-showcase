@@ -11,9 +11,7 @@ A high-performance, responsive single-page web architecture designed for audio s
 
 > Legacy client notes (redacted): [documentation/legacy-client-notes.md](documentation/legacy-client-notes.md)
 
-> Testing & QA guide: [TESTS.md](TESTS.md)
-
-### Project Goal
+## Project Goal
 
 This repository is an engineering showcase and portfolio piece demonstrating modern frontend architecture, automated build pipelines, optimized media streaming, and modular component design.
 
@@ -23,6 +21,10 @@ This repository is an engineering showcase and portfolio piece demonstrating mod
 - Redesigned and refactored into a full open-source architecture showcase by **David H. Watson** ([@dEhiN](https://github.com/dEhiN)) and **Ecaterina Sevciuc** ([@kate8382](https://github.com/kate8382)).
 - **David** served as the Project Lead, Systems Architect, and Backend Developer.
 - **Ecaterina** served as the Lead Frontend Architect, UI/UX Developer, and Test Integration Lead.
+
+### Presentation Video
+
+[Watch the project presentation and demo on YouTube](https://youtu.be/R8rgODfEkXc)
 
 ### Project Resources
 
@@ -178,16 +180,7 @@ npm run prepare
 
 ### Tests & CI notes
 
-- Unit tests (frontend) — run `npm test` (Vitest, jsdom). Backend-specific tests: `npm run test:backend`.
-- E2E tests — `npm run test:e2e` uses Playwright. On Windows, WebKit may fail due to host library issues (libcurl); CI workflows skip or run selective browsers. See `e2e/playwright.config.cjs` for details.
-- When adjusting tests that depend on environment variables, set them before running (examples in vitest backend config files).
-
-### What we changed to prepare for public release
-
-- Replaced personal developer emails in contact tests and backend README with placeholders.
-- Added `backend/.env.example` and documented publishing checklist to avoid committing secrets.
-- Adjusted `build-tools/gen-videos.cjs` to be more tolerant of small duration differences when generating WebM output.
-- Redacted other sensitive notes into `documentation/legacy-client-notes.md` with guidance to keep original archives offline.
+See [TESTS.md](TESTS.md) for detailed, up-to-date instructions on running unit and end-to-end tests locally and in CI.
 
 ## License
 

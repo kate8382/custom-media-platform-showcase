@@ -164,9 +164,9 @@ export class Playlist {
       iframes.forEach((f) => {
         // attach a one-time load listener
         const onload = () => {
-          // eslint-disable-next-line no-unused-vars
           try {
             this._updateVisibility(items, btn);
+            // eslint-disable-next-line no-unused-vars
           } catch (e) {
             /* ignore */
           }

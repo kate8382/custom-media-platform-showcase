@@ -110,6 +110,14 @@ jobs:
             echo "Video cache hit or run_videos not requested — skipping video generation"
           fi
           # build frontend (skip embedded generation steps by running vite directly)
+          # If generated images are missing (cache miss or clean workspace), run generator
+          if [ ! -f frontend/src/assets/img/generated/hero-img-1200.png ]; then
+            echo "generated hero image missing — running image generator"
+            npm run gen:images
+          else
+            echo "generated images present — skipping generation"
+          fi
+
           npx vite build
           echo "Starting backend (if present) and preview frontend in background, logging to ci-servers.log"
           # start backend + frontend preview in background and capture logs
