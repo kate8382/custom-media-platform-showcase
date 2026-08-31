@@ -6,11 +6,11 @@
 A high-performance, responsive single-page web architecture designed for audio streaming, dynamic Bandcamp integration, and custom media showcases.
 
 <p align="center">
-  <video controls preload="none" poster="frontend/src/assets/img/banner.png" style="max-width:100%;height:auto;">
-    <source src="frontend/src/assets/video/generated/presentation.mp4" type="video/mp4">
-    Your browser does not support HTML5 video playback. Watch on <a href="https://youtu.be/R8rgODfEkXc">YouTube</a>.
-  </video>
+  <a href="https://www.youtube.com/watch?v=R8rgODfEkXc" target="_blank" rel="noopener noreferrer">
+    <img src="frontend/src/assets/img/banner.png" alt="Custom Media Platform Showcase" style="max-width:100%;height:auto;" />
+  </a>
 </p>
+<p align="center"><em>Click the image above to watch the full video walkthrough (YouTube).</em></p>
 
 > Legacy client notes (redacted): [documentation/legacy-client-notes.md](documentation/legacy-client-notes.md)
 
