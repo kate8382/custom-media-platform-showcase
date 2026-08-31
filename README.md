@@ -8,7 +8,6 @@ A high-performance, responsive single-page web architecture designed for audio s
 <p align="center">
   <video controls preload="none" poster="frontend/src/assets/img/banner.png" style="max-width:100%;height:auto;">
     <source src="frontend/src/assets/video/generated/presentation.mp4" type="video/mp4">
-    <source src="frontend/src/assets/video/generated/presentation.webm" type="video/webm">
     Your browser does not support HTML5 video playback. Watch on <a href="https://youtu.be/R8rgODfEkXc">YouTube</a>.
   </video>
 </p>
