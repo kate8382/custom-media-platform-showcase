@@ -1,7 +1,7 @@
 # Custom Media Platform Showcase
 
-[![CI](https://github.com/kate8382/custom-media-platform-showcase/actions/workflows/ci.yml/badge.svg)](https://github.com/kate8382/custom-media-platform-showcase/actions)
-[![Pages](https://github.com/kate8382/custom-media-platform-showcase/actions/workflows/deploy-gh-pages.yml/badge.svg)](https://github.com/kate8382/custom-media-platform-showcase/actions)
+[![CI](https://github.com/kate8382/custom-media-platform-showcase/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kate8382/custom-media-platform-showcase/actions)
+[![Pages](https://github.com/kate8382/custom-media-platform-showcase/actions/workflows/deploy-gh-pages.yml/badge.svg?branch=main)](https://github.com/kate8382/custom-media-platform-showcase/actions)
 
 A high-performance, responsive single-page web architecture designed for audio streaming, dynamic Bandcamp integration, and custom media showcases.
 
