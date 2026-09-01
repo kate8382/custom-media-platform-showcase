@@ -27,7 +27,7 @@ export default class Router {
     try {
       history.replaceState({ path: initialPath }, '', window.location.href);
       // eslint-disable-next-line no-unused-vars, prettier/prettier
-    } catch (err) { }
+    } catch (err) {}
   }
 
   // Clean up event listeners when the router is no longer needed
