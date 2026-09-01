@@ -26,7 +26,8 @@ export default class Router {
     this._routeTo(initialPath);
     try {
       history.replaceState({ path: initialPath }, '', window.location.href);
-    } catch (err) {}
+      // eslint-disable-next-line no-unused-vars, prettier/prettier
+    } catch (err) { }
   }
 
   // Clean up event listeners when the router is no longer needed
@@ -46,6 +47,7 @@ export default class Router {
       // Use pushState to update URL without causing native anchor jump
       try {
         history.pushState({ path: path }, '', hash);
+        // eslint-disable-next-line no-unused-vars
       } catch (err) {
         // fallback to location.hash if pushState is not available
         window.location.hash = hash;
@@ -140,7 +142,12 @@ export default class Router {
       if (!linkPath.startsWith('/'))
         linkPath = linkPath.startsWith('/') ? linkPath : '/' + linkPath.replace(/^#/, '');
       const normPath = path.startsWith('/') ? path : '/' + path.replace(/^#/, '');
-      if (linkPath === normPath) link.setAttribute('aria-current', 'page');
+      // treat '/' and '/home' as equivalent so the Home link becomes active on default load
+      const equivalent =
+        linkPath === normPath ||
+        (normPath === '/' && linkPath === '/home') ||
+        (normPath === '/home' && linkPath === '/');
+      if (equivalent) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');
     });
   }
