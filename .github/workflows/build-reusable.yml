@@ -99,7 +99,8 @@ jobs:
             echo "No image cache hit — generating images"
             npm run gen:images
           else
-            echo "Image cache hit — skipping image generation"
+            echo "Image cache hit — regenerating images to ensure freshness"
+            FORCE=1 npm run gen:images
           fi
           # generate videos only when requested and cache miss
           if [ "${{ inputs.run_videos }}" = 'true' ] && [ "${{ steps.video-cache.outputs.cache-hit }}" != 'true' ]; then
@@ -115,7 +116,8 @@ jobs:
             echo "generated hero image missing — running image generator"
             npm run gen:images
           else
-            echo "generated images present — skipping generation"
+            echo "generated images present — regenerating to be safe"
+            FORCE=1 npm run gen:images
           fi
 
           npx vite build
